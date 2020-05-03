@@ -1,0 +1,79 @@
+@import './../../scss/variables';
+
+.wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color:  #fff;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.096);
+  z-index: 3;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+    margin-bottom: 15px;
+
+    &__logo{
+      font-size: 24px;
+      font-weight: 500;
+
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #000;
+      }
+    }
+
+    &__right {
+      display: flex;
+      align-items: center;
+
+      .userAva {
+        img {
+          height: 47px;
+          border-radius: 50px;
+          border: 2px solid rgba(190, 190, 190, 0.514);
+        }
+      }
+
+      .user_name {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 400;
+        color: $main-color;
+        margin-left: 25px;
+        margin-right: 20px;
+      }
+
+      .user_name:hover {
+        transform: scale(1.05);
+        transition: color 100ms linear;
+      }
+
+      .header_nav {
+        display: flex;
+        align-items: baseline;
+        height: 20px;
+        margin-left: 10px;
+
+        .ico_item {
+          margin-left: 10px;
+
+          a {
+            img {
+              height: 20px;
+              fill: red;
+
+              &:hover {
+                transform: scale(1.2);
+                transition: transform 120ms linear;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

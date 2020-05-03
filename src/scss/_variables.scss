@@ -1,0 +1,39 @@
+$main-color: rgba(23, 177, 238, 0.836);
+
+@mixin scroll () {
+  ::-webkit-scrollbar-button {
+    background-image:   url('');
+    background-repeat:  no-repeat;
+    width:  5px;
+    height: 0px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-image:   url('');
+    background-repeat:  no-repeat;
+    background-color:   rgba(190, 190, 190, 0.329);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color:   $main-color;
+  }
+
+  ::-webkit-scrollbar-thumb:hover{
+    background-color:  #56889fa2;
+  }
+
+  ::-webkit-resizer{
+    background-image:   url('');
+    background-repeat:  no-repeat;
+    width:  4px;
+    height: 0px;
+  }
+
+  ::-webkit-scrollbar{
+    width: 6px;
+  }
+};
