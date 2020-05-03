@@ -1,0 +1,52 @@
+@import './../../../../../scss/variables';
+
+.inputMessage {
+    height: 50px;
+    width: 100%;
+    border-top: 1px solid rgba(190, 190, 190, 0.329);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+
+    .emoji {
+        margin-left: 10px;
+        
+        img {
+            width: 25px;
+        }
+    }
+
+    input {
+        font-family: "Montserrat";
+        font-size: 12px;
+        padding: 0 15px;
+        margin: 0 15px;
+        flex: 1;
+        height: 30px;
+        border: 1px solid rgba(190, 190, 190, 0.329);
+        border-radius: 10px;
+        outline: none;
+
+        &::placeholder {
+            color: #a09e9e;
+        }
+
+        &:focus::placeholder {
+            visibility: hidden; 
+            outline: none;
+        } 
+    }
+
+    .inputBtn {
+        margin-right: 10px;
+
+        a {
+            text-decoration: none;
+            padding: 8px 20px;
+            background-color: $main-color;
+            border-radius: 10px;
+            color: #fff;
+        }
+    }
+}

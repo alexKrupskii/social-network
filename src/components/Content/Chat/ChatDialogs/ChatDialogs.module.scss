@@ -1,0 +1,49 @@
+
+@import './../../../../scss/variables';
+
+.dialogsWrapper {
+    grid-area: dialogsWrapper;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.096);
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px; 
+
+    .userInfo {
+        display: flex;
+        align-items: center;
+        height: 70px;
+        border-bottom: 1px solid rgba(190, 190, 190, 0.329);
+        padding-bottom: 10px;
+
+        .userAva {
+            margin-right: 15px;
+            img {
+                width: 60px;
+                border-radius: 10px;
+            }
+        }
+        .userName {
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+
+    .title {
+        font-size: 18px;
+        font-weight: 500;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(190, 190, 190, 0.329);
+        margin-bottom: 10px;
+        
+    }
+
+    .dialogs {
+        flex: 1;
+        overflow-y: auto;
+        @include scroll;
+    }
+}
+

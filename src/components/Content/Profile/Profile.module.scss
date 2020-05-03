@@ -1,0 +1,7 @@
+.profile {
+    display: grid;
+    grid-template: 
+    'sideBar posts'
+    / 290px 1fr;
+    z-index: 5;
+}

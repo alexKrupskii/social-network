@@ -1,0 +1,58 @@
+.messagesWrapper {
+    grid-area: messagesWrapper;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background-color: #fff;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.096);
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    margin-left: 15px;
+
+    .userDiscussion {
+        height: 70px;
+        border-bottom: 1px solid rgba(190, 190, 190, 0.329);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 10px;
+
+        .userInfo {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+
+            .userAva {
+                margin-right: 15px;
+                height: 45px;
+
+                img {
+                    width: 45px;
+                    border-radius: 10px;
+                }
+            }
+
+            .userName {
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+
+        .chatIcons {
+            margin-right: 20px;
+
+            img {
+                width: 25px;
+                padding-left: 10px;
+            }
+        }
+    }
+
+    .chat {
+        flex: 1;
+        background: url('/img/chat_bg1.png') no-repeat center top / cover;
+        padding: 20px;
+        overflow-y: auto;
+    }
+}

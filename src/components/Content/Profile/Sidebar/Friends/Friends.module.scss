@@ -1,0 +1,43 @@
+.friendsWrapper {
+    height: min-content;
+    background-color: #fff;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.096);
+    margin-bottom: 15px;
+    padding: 15px 15px 20px 15px;
+    border-radius: 10px;
+    // position: sticky;
+    // top: 397px;
+
+    .title {
+        font-size: 16px;
+        font-weight: 500;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(190, 190, 190, 0.514);
+    }
+    
+    .userWrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .user {
+            width: 33.3%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 15px;
+
+            .userAva {
+                width: 50px;
+                margin-bottom: 5px;
+                border-radius: 10px;
+                
+            }
+            
+            .userName {
+                font-size: 13px;
+            }
+        }   
+    }
+}
+

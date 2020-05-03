@@ -1,0 +1,28 @@
+.userDialog {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+
+    .userAva {
+        margin-right: 15px;
+        height: 45px;
+
+        img {
+            width: 45px;
+            border-radius: 10px;
+        }
+    }
+    
+    .userName {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &:hover {
+        background-color: rgba(181, 222, 255, 0.267);
+        transition: background-color 200ms linear;
+    }
+}
+

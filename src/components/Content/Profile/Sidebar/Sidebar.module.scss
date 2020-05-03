@@ -1,0 +1,8 @@
+.sideBar {
+    grid-area: sideBar;
+    
+    .wrapper {  
+        position: sticky;
+        top: 90px;  
+    }
+}

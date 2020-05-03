@@ -1,0 +1,72 @@
+.profileWrapper {
+    height: min-content;
+    background-color: #fff;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.096);
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    // position: sticky;
+    // top: 90px;
+
+    .ava_links {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .userAva {
+            img {
+                max-width: 170px;
+                max-height: 170px;
+                width: 170px;
+                border: 1px solid rgba(190, 190, 190, 0.514);
+                box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.342);
+            }
+        }
+
+        .statistic {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            flex: 1;
+            
+            &__wrapper {
+                text-align: center;
+
+                .item {
+                    font-size: 13px;
+                }
+
+                .sum {
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .userName {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(190, 190, 190, 0.514);
+    }
+    
+    .links {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .link {
+            img {
+                width: 22px;
+                border-radius: 50px;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+                transition: transform 50ms linear;
+            }
+        }
+    }
+}

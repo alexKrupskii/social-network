@@ -12,7 +12,7 @@ const Header = () => {
                     <div className={mod.header__right}>
                         <div className={mod.header_nav}>
                             <div className={mod.ico_item}>
-                                <a href="#"></a>
+                                <a href="#"><img src="./ico/home.svg" alt="" /></a>
                             </div>
                             <div className={mod.ico_item}>
                                 <a href="#"><img src="./ico/chat.svg" alt="" /></a>
