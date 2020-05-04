@@ -11,15 +11,15 @@ const UserInfo = (props: any) => {
                 <div className={mod.statistic}>
                     <div className={mod.statistic__wrapper}>
                         <div className={mod.item}>Posts</div>
-                        <div className={mod.sum}>{props.postsCount}</div>
+                        <div className={mod.sum}>40</div>
                     </div>
                     <div className={mod.statistic__wrapper}>
                         <div className={mod.item}>Followers</div>
-                        <div className={mod.sum}>{props.followersCount}</div>
+                        <div className={mod.sum}>355770</div>
                     </div>
                     <div className={mod.statistic__wrapper}>
                         <div className={mod.item}>Following</div>
-                        <div className={mod.sum}>{props.followingCount}</div>
+                        <div className={mod.sum}>125</div>
                     </div>
                 </div>
             </div>

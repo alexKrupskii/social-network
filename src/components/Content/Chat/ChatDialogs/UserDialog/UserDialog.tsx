@@ -1,14 +1,14 @@
 import React from 'react';
 import mod from './UserDialog.module.scss'
 
-const UserDialog = (props) => {
+const UserDialog = () => {
     return (
-        <a href='#' className={mod.userDialog} activeClassName={mod.activeLink}>
+        <a href='#' className={mod.userDialog} >
             <div className={mod.userAva}>
-                <img src={props.avatar} alt="" />
+                <img src='./img/gwyneth_ava.jpg' alt="" />
             </div>
             <div className={mod.userName}>
-                {props.userName}
+                Gwyneth Paltrow
             </div>
         </a>
     )

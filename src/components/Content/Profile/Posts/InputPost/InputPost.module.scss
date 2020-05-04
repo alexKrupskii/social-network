@@ -15,6 +15,7 @@
         margin-bottom: 15px;
         border-bottom: 1px solid rgba(190, 190, 190, 0.514);
     }
+
     .newPost {
         width:100%;
         padding-bottom: 15px;
@@ -63,8 +64,9 @@
             }
 
             &:hover {
+                background-color: rgba(24, 164, 219, 0.836);
                 box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.589);
-                transition: box-shadow 200ms linear;
+                transition: box-shadow 200ms linear, background-color linear 150ms;
             }
         }
 
@@ -82,8 +84,9 @@
                 text-decoration: none;
 
                 &:hover {
+                    background-color: rgba(24, 164, 219, 0.836);
                     box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.589);
-                    transition: box-shadow 200ms linear;
+                    transition: box-shadow 200ms linear, background-color linear 150ms;
                 }
 
                 .titleItem {

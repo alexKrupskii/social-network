@@ -5,10 +5,10 @@ const UserMessageTitle = () => {
     return (
         <div className={mod.userInfo}>
             <div className={mod.userAva}>
-                <img alt="" />
+                <img src='./img/gwyneth_ava.jpg' alt="" />
             </div>
             <div className={mod.userName}>
-
+                Gwyneth Paltrow
             </div>
         </div>
     )

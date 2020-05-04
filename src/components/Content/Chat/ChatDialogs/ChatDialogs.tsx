@@ -18,6 +18,16 @@ const ChatDialogs = () => {
             </div>
             <div className={mod.dialogs}>
                 <UserDialog />
+                <UserDialog />
+                <UserDialog />
+                <UserDialog />
+                <UserDialog />
+                <UserDialog />
+                <UserDialog />
+                <UserDialog />
+                <UserDialog />
+                <UserDialog />
+                <UserDialog />
             </div>
         </div>
     )
