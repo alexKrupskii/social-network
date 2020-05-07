@@ -3,8 +3,16 @@ import mod from './ChatMessages.module.scss'
 import UserMessage from './UserMessage/UserMessage';
 import InputMessage from './InputMessage/InputMessage';
 import UserMessageTitle from './UserMessageTitle/UserMessageTitle';
+import {ChatPageType} from './../../../../redux/state'
 
-const ChatMessages = () => {
+
+
+const ChatMessages = (props:ChatPageType) => {
+    
+
+    let UserMessageElements = props.messageData
+    .map(m => <UserMessage avatar={m.avatar} time={m.time} message={m.message}/>)
+
     return (
         <div className={mod.messagesWrapper}>
             <div className={mod.userDiscussion}>
@@ -15,7 +23,7 @@ const ChatMessages = () => {
                 </div>
             </div>
             <div className={mod.chat}>
-                <UserMessage />
+                {UserMessageElements}
             </div>
             <InputMessage />
         </div>

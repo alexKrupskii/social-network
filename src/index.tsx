@@ -4,15 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
+import state from './redux/state';
+
 
 ReactDOM.render(
     <BrowserRouter>
         <React.StrictMode>
-            <App />
+            <App state={state}/>
         </React.StrictMode>
     </BrowserRouter>,
         document.getElementById('root')
-        );
+);
 
 
 

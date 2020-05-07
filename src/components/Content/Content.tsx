@@ -5,15 +5,18 @@ import News from './News/News';
 import Music from './Music/Music';
 import Settings from './Settings/Settings';
 import Profile from "./Profile/Profile";
-import { Route } from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import {StateExportType} from './../../redux/state'
 
-const Content = () => {
+
+const Content = (props: StateExportType) => {
+    debugger
     return (
         <div className='container'>
             <div className={mod.content}>
                 <div className={mod.content__page}>
                     <Route path='/profile' render = {()=> <Profile />} />
-                    <Route path='/chat' render = {()=> <Chat />} />
+                    <Route path='/chat' render = {()=> <Chat state={props.state}/>} />
                     <Route path='/news' render = {()=> <News />} />
                     <Route path='/music' render = {()=> <Music />} />
                     <Route path='/settings' render = {()=> <Settings />} />

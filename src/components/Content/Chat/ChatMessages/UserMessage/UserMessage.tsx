@@ -1,16 +1,22 @@
 import React from 'react';
 import mod from './UserMessage.module.scss'
 
-const UserMessage = () => {
+type UserMessageType = {
+    avatar: string
+    time: string|number
+    message: string
+}
+
+
+const UserMessage = (props:UserMessageType) => {
     return (
         <div className={mod.chatWrapper}>
             <div className={mod.userWrapper}>
-                <img src='./img/robert_ava.jpg' alt="" className={mod.userAva} />
-                <div className={mod.messageTime}>5:32</div>
+                <img src={props.avatar} alt="" className={mod.userAva} />
+                <div className={mod.messageTime}>{props.time}</div>
             </div>
             <div className={mod.message}>
-                Hellow! How are you?
-                I heard you starred in a new movie.
+                {props.message}
             </div>
         </div>
     )

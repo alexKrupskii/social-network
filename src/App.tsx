@@ -4,18 +4,20 @@ import Header from './components/Header/Header';
 import Content from './components/Content/Content';
 import Footer from './components/Footer/Footer';
 import Navigation from "./components/Navigation/Navigation";
-import { Route } from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import {StateExportType} from './redux/state';
 
-const App = () => {
 
-  return (
-      <div className="app">
-        <Header />
-        <Navigation />
-        <Content />
-        <Route path='/(music|profile|news|settings)' render = {()=> <Footer />} />
-      </div>
-  );
+const App: React.FC<StateExportType> = (props: StateExportType) => {
+    debugger
+    return (
+        <div className="app">
+            <Header/>
+            <Navigation/>
+            <Content state={props.state}/>
+            <Route path='/(music|profile|news|settings)' render={() => <Footer/>}/>
+        </div>
+    );
 }
 
 export default App;
