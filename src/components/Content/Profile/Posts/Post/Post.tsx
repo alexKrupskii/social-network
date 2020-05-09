@@ -1,40 +1,51 @@
 import React from 'react';
 import mod from './Post.module.scss'
 
-const Post = (props:any) => {
+type PostType = {
+    avatar: string
+    userName: string
+    time: number | string
+    postImg?: string
+    text: string
+    likesCount: number
+    commentCount: number
+    repostCount: number
+}
+
+const Post = (props: PostType) => {
     return (
         <div className={mod.post}>
             <div className={mod.postInfo}>
                 <div className={mod.userAva}>
-                    <img src='./img/gwyneth_ava.jpg' alt="" />
+                    <img src={props.avatar} alt="" />
                 </div>
                 <div className={mod.info}>
                     <div className={mod.userName}>
-                        Gwyneth Paltrow
+                        {props.userName}
                     </div>
                     <div className={mod.time}>
-                        5 minutes ago
+                        {props.time}
                     </div>
                 </div>
             </div>
-            <img src='./img/download/gwin.jpg' className={mod.postImg} alt=""/>
+            <img src={props.postImg} className={mod.postImg} alt=""/>
             <div className={mod.postText}>
-                Hello! My name is Gwyneth! I am an actress in Hollywood. And I starred in the world blockbuster Avengers!
+                {props.text}
             </div>
             <div className={mod.postLinks}>
                 <div className={mod.item}>
                     <div className={mod.item}>
                         <a href='#'><img src="./ico/files_post/like.svg" alt="" className={mod.like} /></a>
-                        <div className={mod.itemNum}>14576</div>
+                        <div className={mod.itemNum}>{props.likesCount}</div>
                     </div>
                     <div className={mod.item}>
                         <a href='#'><img src="./ico/files_post/chat.svg" alt="" className={mod.comment} /></a>
-                        <div className={mod.itemNum} >2880</div>
+                        <div className={mod.itemNum}>{props.commentCount}</div>
                     </div>
                 </div>
                 <div className={mod.item}>
                     <a href='#'><img src="./ico/files_post/links.svg" alt="" className={mod.repost} /></a>
-                    <div className={mod.itemNum}>6888</div>
+                    <div className={mod.itemNum}>{props.repostCount}</div>
                 </div>
             </div>
         </div>

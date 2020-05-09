@@ -4,9 +4,22 @@ import UserMessage from './UserMessage/UserMessage';
 import InputMessage from './InputMessage/InputMessage';
 import UserMessageTitle from './UserMessageTitle/UserMessageTitle';
 
+
 type ChatType = {
+    messagesPage: MessagesType
+}
+
+type MessagesType = {
+    userMessageTitleData: Array<UserMessageTitleType>
     messageData: Array<UserMessageType>
 }
+
+type UserMessageTitleType = {
+    id?: number
+    avatar: string
+    userName: string
+}
+
 type UserMessageType = {
     id?: number
     avatar: string
@@ -16,20 +29,23 @@ type UserMessageType = {
 
 const ChatMessages = (props:ChatType) => {
 
-    let UserMessageElements = props.messageData
+    let userMessageElements = props.messagesPage.messageData
     .map(m => <UserMessage avatar={m.avatar} time={m.time} message={m.message}/>);
+
+    let userMessageTitleElement = props.messagesPage.userMessageTitleData
+        .map(t => <UserMessageTitle avatar={t.avatar} userName={t.userName}/> )
 
     return (
         <div className={mod.messagesWrapper}>
             <div className={mod.userDiscussion}>
-                <UserMessageTitle />
+                {userMessageTitleElement}
                 <div className={mod.chatIcons}>
                     <img src="./ico/call.svg" alt="" />
                     <img src="./ico/video-chat.svg" alt="" />
                 </div>
             </div>
             <div className={mod.chat}>
-                {UserMessageElements}
+                {userMessageElements}
             </div>
             <InputMessage />
         </div>

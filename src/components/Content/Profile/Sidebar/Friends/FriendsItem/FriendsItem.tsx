@@ -1,7 +1,13 @@
 import React from 'react';
 import mod from './../Friends.module.scss'
 
-const FriendsItem = (props:any) => {
+type FriendsItemType = {
+    id?: number
+    avatar: string
+    userName: string
+}
+
+const FriendsItem = (props: FriendsItemType) => {
     return (
         <div className={mod.user}>
             <img src={props.avatar} alt="" className={mod.userAva} />
