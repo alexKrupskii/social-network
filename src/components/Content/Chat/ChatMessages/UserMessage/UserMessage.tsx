@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './UserMessage.module.scss'
+import mod from './UserMessage.module.scss';
 
 type UserMessageType = {
     avatar: string

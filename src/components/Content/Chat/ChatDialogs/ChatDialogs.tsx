@@ -2,7 +2,21 @@ import React from 'react';
 import mod from './ChatDialogs.module.scss'
 import UserDialog from './UserDialog/UserDialog';
 
-const ChatDialogs = () => {
+type ChatType = {
+    dialogsData: Array<UserDialogsType>
+}
+
+type UserDialogsType = {
+    id?: number
+    avatar: string
+    userName: string
+}
+
+const ChatDialogs = (props:ChatType) => {
+
+    let UserDialogsElement = props.dialogsData
+        .map(d => <UserDialog avatar={d.avatar} userName={d.userName}/>);
+
     return (
         <div className={mod.dialogsWrapper}>
             <div className={mod.userInfo}>
@@ -17,17 +31,7 @@ const ChatDialogs = () => {
                 Dialogs
             </div>
             <div className={mod.dialogs}>
-                <UserDialog />
-                <UserDialog />
-                <UserDialog />
-                <UserDialog />
-                <UserDialog />
-                <UserDialog />
-                <UserDialog />
-                <UserDialog />
-                <UserDialog />
-                <UserDialog />
-                <UserDialog />
+                {UserDialogsElement}
             </div>
         </div>
     )

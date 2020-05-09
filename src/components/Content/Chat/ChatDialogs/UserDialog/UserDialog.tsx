@@ -1,14 +1,19 @@
 import React from 'react';
 import mod from './UserDialog.module.scss'
 
-const UserDialog = () => {
+type UserDialogsType = {
+    id?: number
+    avatar: string
+    userName: string
+}
+const UserDialog = (props:UserDialogsType) => {
     return (
         <a href='#' className={mod.userDialog} >
             <div className={mod.userAva}>
-                <img src='./img/gwyneth_ava.jpg' alt="" />
+                <img src={props.avatar} alt="" />
             </div>
             <div className={mod.userName}>
-                Gwyneth Paltrow
+                {props.userName}
             </div>
         </a>
     )

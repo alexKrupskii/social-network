@@ -8,7 +8,7 @@ import {Route} from 'react-router-dom';
 import {StateExportType} from './redux/state';
 
 
-const App: React.FC<StateExportType> = (props: StateExportType) => {
+const App = (props: StateExportType) => {
     debugger
     return (
         <div className="app">
@@ -18,7 +18,7 @@ const App: React.FC<StateExportType> = (props: StateExportType) => {
             <Route path='/(music|profile|news|settings)' render={() => <Footer/>}/>
         </div>
     );
-}
+};
 
 export default App;
 

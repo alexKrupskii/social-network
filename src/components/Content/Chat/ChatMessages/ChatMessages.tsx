@@ -3,15 +3,21 @@ import mod from './ChatMessages.module.scss'
 import UserMessage from './UserMessage/UserMessage';
 import InputMessage from './InputMessage/InputMessage';
 import UserMessageTitle from './UserMessageTitle/UserMessageTitle';
-import {ChatPageType} from './../../../../redux/state'
 
+type ChatType = {
+    messageData: Array<UserMessageType>
+}
+type UserMessageType = {
+    id?: number
+    avatar: string
+    time: number | string
+    message: string
+}
 
-
-const ChatMessages = (props:ChatPageType) => {
-    
+const ChatMessages = (props:ChatType) => {
 
     let UserMessageElements = props.messageData
-    .map(m => <UserMessage avatar={m.avatar} time={m.time} message={m.message}/>)
+    .map(m => <UserMessage avatar={m.avatar} time={m.time} message={m.message}/>);
 
     return (
         <div className={mod.messagesWrapper}>
