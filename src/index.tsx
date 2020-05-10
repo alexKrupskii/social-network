@@ -10,7 +10,7 @@ import state from './redux/state';
 ReactDOM.render(
     <BrowserRouter>
         <React.StrictMode>
-            <App state={state}/>
+            <App state={state} />
         </React.StrictMode>
     </BrowserRouter>,
         document.getElementById('root')

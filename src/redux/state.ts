@@ -1,3 +1,5 @@
+import {useState} from "react";
+
 export type StateExportType = {
     state: StateType
 }
@@ -123,5 +125,8 @@ let state: StateType = {
     } 
 };
 
+export const Example = () => {
+    const [likesCount, setCount] = useState(0)
+}
 
 export default state;

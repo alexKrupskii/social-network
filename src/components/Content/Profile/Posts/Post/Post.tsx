@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import mod from './Post.module.scss'
 
 type PostType = {
@@ -13,6 +13,7 @@ type PostType = {
 }
 
 const Post = (props: PostType) => {
+
     return (
         <div className={mod.post}>
             <div className={mod.postInfo}>
