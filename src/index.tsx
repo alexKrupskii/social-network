@@ -7,6 +7,8 @@ import {BrowserRouter} from "react-router-dom";
 import state from './redux/state';
 
 
+
+let rerenderEntireTree = () =>{
 ReactDOM.render(
     <BrowserRouter>
         <React.StrictMode>
@@ -15,8 +17,9 @@ ReactDOM.render(
     </BrowserRouter>,
         document.getElementById('root')
 );
+}
 
-
+rerenderEntireTree(state);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

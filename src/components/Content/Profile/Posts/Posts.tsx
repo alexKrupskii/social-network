@@ -22,14 +22,8 @@ type PostType = {
 const Posts = (props: ProfileType) => {
 
     let postElements = props.postData
-        .map( p => <Post userName={p.userName}
-                         postImg={p.postImg}
-                         avatar={p.avatar}
-                         time={p.time}
-                         text={p.text}
-                         likesCount={p.likesCount}
-                         commentCount={p.commentCount}
-                         repostCount={p.repostCount}/>)
+        .map( p => <Post id={p.id} userName={p.userName} postImg={p.postImg} avatar={p.avatar} time={p.time} text={p.text} likesCount={p.likesCount} commentCount={p.commentCount} repostCount={p.repostCount}/>)
+        
 
     return (
         <div className={mod.posts}>

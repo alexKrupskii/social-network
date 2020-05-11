@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import mod from './Post.module.scss'
 
 type PostType = {
+    id: number
     avatar: string
     userName: string
     time: number | string
@@ -13,6 +14,14 @@ type PostType = {
 }
 
 const Post = (props: PostType) => {
+
+    let [likesCount, setLikesCount] = useState(0)
+
+    let changeLikesCount = () => {
+        setLikesCount(likesCount + 1)
+    }
+
+    
 
     return (
         <div className={mod.post}>
@@ -36,8 +45,8 @@ const Post = (props: PostType) => {
             <div className={mod.postLinks}>
                 <div className={mod.item}>
                     <div className={mod.item}>
-                        <a href='#'><img src="./ico/files_post/like.svg" alt="" className={mod.like} /></a>
-                        <div className={mod.itemNum}>{props.likesCount}</div>
+                        <a onClick={()=> changeLikesCount()}><img src="./ico/files_post/like.svg" alt="" className={mod.like} /></a>
+                        <div className={mod.itemNum}>{likesCount}</div>
                     </div>
                     <div className={mod.item}>
                         <a href='#'><img src="./ico/files_post/chat.svg" alt="" className={mod.comment} /></a>
