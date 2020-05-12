@@ -8,9 +8,6 @@ import {Route} from 'react-router-dom';
 import {StateExportType} from './redux/state';
 
 
-
-
-
 const App = (props: StateExportType ) => {
     return (
         <div className="app">

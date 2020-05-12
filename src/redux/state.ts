@@ -2,32 +2,30 @@ export type StateExportType = {
     state: StateType
 }
 
-
 export type StateType = {
-    chatPage: ChatType
-    profilePage: ProfileType
+    chatPage: ChatPageType
+    profilePage: ProfilePageType
 }
 
-type ProfileType = {
-    postData: Array<PostType>
-    sideBarData: SideBarType
-}
-type ChatType = {
-    messagesPage: MessagesType
-    dialogsData: Array<UserDialogsType>
-
+export type ProfilePageType = {
+    postData: Array<PostDataType>
+    sideBarData: SideBarDataType
 }
 
-type MessagesType = {
-    userMessageTitleData: Array<UserMessageTitleType>
-    messageData: Array<UserMessageType>
+export type ChatPageType = {
+    messagesPage: MessagesPageType
+    dialogsData: Array<DialogsDataType>
 }
-type SideBarType = {
-    userInfoData: Array<UserInfoType>
-    friendsData: Array<FriendsItemType>
+export type MessagesPageType = {
+    userMessageTitleData: Array<UserMessageTitleDataType>
+    messageData: Array<MessageDataType>
+}
+export type SideBarDataType = {
+    userInfoData: Array<UserInfoDataType>
+    friendsData: Array<FriendsDataType>
 }
 
-type UserInfoType = {
+export type UserInfoDataType = {
     id: number
     avatar: string
     userName: string
@@ -35,12 +33,12 @@ type UserInfoType = {
     followersCount: number
     followingCount: number
 }
-type FriendsItemType = {
+export type FriendsDataType = {
     id: number
     avatar: string
     userName: string
 }
-type PostType = {
+export type PostDataType = {
     id: number
     avatar: string
     userName: string
@@ -51,23 +49,22 @@ type PostType = {
     commentCount: number
     repostCount: number
 }
-type UserMessageTitleType = {
+export type UserMessageTitleDataType = {
     id?: number
     avatar: string
     userName: string
 }
-type UserMessageType = {
+export type MessageDataType = {
     id?: number
     avatar: string
     time: number | string
     message: string
 }
-type UserDialogsType = {
+export type DialogsDataType = {
     id?: number
     avatar: string
     userName: string
 }
-
 
 let state: StateType = {
     profilePage: {
@@ -123,8 +120,6 @@ let state: StateType = {
             ]
         }
     },
-
-
 };
 
 export function addLike(id: number, likesCount: number) {

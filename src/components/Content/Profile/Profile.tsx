@@ -2,13 +2,18 @@ import React from 'react';
 import mod from './Profile.module.scss'
 import Sidebar from './Sidebar/Sidebar';
 import Posts from './Posts/Posts';
-import {StateExportType} from "../../../redux/state";
+import { ProfilePageType} from "../../../redux/state";
 
-const Profile = (props: StateExportType) => {
+type StateType = {
+    profilePage: ProfilePageType
+}
+
+const Profile = (props: StateType) => {
+    debugger
     return (
         <div className={mod.profile}>
-            <Sidebar sideBarData={props.state.profilePage.sideBarData}/>
-            <Posts postData={props.state.profilePage.postData}/>
+            <Sidebar sideBarData={props.profilePage.sideBarData}/>
+            <Posts postData={props.profilePage.postData}/>
         </div>           
     )
 };
