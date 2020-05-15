@@ -1,7 +1,8 @@
 import React from 'react';
-import mod from './Posts.module.scss'
+import style from './Posts.module.scss'
 import InputPost from './InputPost/InputPost';
 import Post from './Post/Post';
+
 
 
 type ProfileType = {
@@ -26,9 +27,9 @@ const Posts = (props: ProfileType) => {
         
 
     return (
-        <div className={mod.posts}>
-            <div className={mod.wrapper}>
-            <InputPost/>
+        <div className={style.posts}>
+            <div className={style.wrapper}>
+            <InputPost />
             {postElements}
             </div>
         </div>

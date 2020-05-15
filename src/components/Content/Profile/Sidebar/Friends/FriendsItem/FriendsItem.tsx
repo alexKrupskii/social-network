@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './../Friends.module.scss'
+import style from './../Friends.module.scss'
 
 type FriendsItemType = {
     id?: number
@@ -9,9 +9,9 @@ type FriendsItemType = {
 
 const FriendsItem = (props: FriendsItemType) => {
     return (
-        <div className={mod.user}>
-            <img src={props.avatar} alt="" className={mod.userAva} />
-            <div className={mod.userName}>{props.userName}</div>
+        <div className={style.user}>
+            <img src={props.avatar} alt="" className={style.userAva} />
+            <div className={style.userName}>{props.userName}</div>
         </div>
     )
 };

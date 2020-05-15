@@ -1,27 +1,27 @@
 import React from 'react';
-import mod from './InputPost.module.scss'
+import style from './InputPost.module.scss'
 
 const InputPost = (props:any) => {
     return (
-        <div className={mod.inputPost}>
-            <div className={mod.title}>New post</div>
-            <div className={mod.newPost}>
+        <div className={style.inputPost}>
+            <div className={style.title}>New post</div>
+            <div className={style.newPost}>
                 <input placeholder='Say something here...' />
             </div>
-            <div className={mod.addPost}>
-                <a href='#' className={mod.btnPost}>Post</a>
-                <div className={mod.addFile}>
-                    <a href='#' className={mod.item}>
+            <div className={style.addPost}>
+                <a href='#' className={style.btnPost}>Post</a>
+                <div className={style.addFile}>
+                    <a href='#' className={style.item}>
                         <img src="./ico/files_post/emoji.svg" alt="" />
-                        <div className={mod.titleItem}>Emoji</div>
+                        <div className={style.titleItem}>Emoji</div>
                     </a>
-                    <a href='#' className={mod.item}>
+                    <a href='#' className={style.item}>
                         <img src="./ico/files_post/image.svg" alt="" />
-                        <div className={mod.titleItem}>Picture</div>
+                        <div className={style.titleItem}>Picture</div>
                     </a>
-                    <a href='#' className={mod.item}>
+                    <a href='#' className={style.item}>
                         <img src="./ico/files_post/video.svg" alt="" />
-                        <div className={mod.titleItem}>Video</div>
+                        <div className={style.titleItem}>Video</div>
                     </a>
                 </div>
             </div>

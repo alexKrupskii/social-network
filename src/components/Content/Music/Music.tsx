@@ -1,9 +1,9 @@
 import React from 'react';
-import mod from './Music.module.scss'
+import style from './Music.module.scss'
 
 const Music = () => {
     return (
-        <div className={mod.music}>
+        <div className={style.music}>
             Music
         </div>           
     )

@@ -1,33 +1,15 @@
 import React from 'react';
-import mod from './ChatMessages.module.scss'
+import style from './ChatMessages.module.scss'
 import UserMessage from './UserMessage/UserMessage';
 import InputMessage from './InputMessage/InputMessage';
 import UserMessageTitle from './UserMessageTitle/UserMessageTitle';
+import {MessagesPageType} from './../../../../redux/state';
 
-
-type ChatType = {
-    messagesPage: MessagesType
+type ChatPageType = {
+    messagesPage: MessagesPageType
 }
 
-type MessagesType = {
-    userMessageTitleData: Array<UserMessageTitleType>
-    messageData: Array<UserMessageType>
-}
-
-type UserMessageTitleType = {
-    id?: number
-    avatar: string
-    userName: string
-}
-
-type UserMessageType = {
-    id?: number
-    avatar: string
-    time: number | string
-    message: string
-}
-
-const ChatMessages = (props:ChatType) => {
+const ChatMessages = (props:ChatPageType) => {
 
     let userMessageElements = props.messagesPage.messageData
     .map(m => <UserMessage avatar={m.avatar} time={m.time} message={m.message}/>);
@@ -36,15 +18,15 @@ const ChatMessages = (props:ChatType) => {
         .map(t => <UserMessageTitle avatar={t.avatar} userName={t.userName}/> )
 
     return (
-        <div className={mod.messagesWrapper}>
-            <div className={mod.userDiscussion}>
+        <div className={style.messagesWrapper}>
+            <div className={style.userDiscussion}>
                 {userMessageTitleElement}
-                <div className={mod.chatIcons}>
+                <div className={style.chatIcons}>
                     <img src="./ico/call.svg" alt="" />
                     <img src="./ico/video-chat.svg" alt="" />
                 </div>
             </div>
-            <div className={mod.chat}>
+            <div className={style.chat}>
                 {userMessageElements}
             </div>
             <InputMessage />

@@ -1,14 +1,14 @@
 import React from 'react';
-import mod from './InputMessage.module.scss';
+import style from './InputMessage.module.scss';
 
 const InputMessage = (props:any) => {
     return (
-        <div className={mod.inputMessage}>
-            <div className={mod.emoji}>
+        <div className={style.inputMessage}>
+            <div className={style.emoji}>
                 <img src="./ico/files_post/emoji.svg" alt="" />
             </div>
             <input type="text" placeholder='Type your message...' />
-            <div className={mod.inputBtn}>
+            <div className={style.inputBtn}>
                 <a href="#" >Send</a>
             </div>
         </div>

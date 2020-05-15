@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './UserDialog.module.scss'
+import style from './UserDialog.module.scss'
 
 type UserDialogsType = {
     id?: number
@@ -8,11 +8,11 @@ type UserDialogsType = {
 }
 const UserDialog = (props:UserDialogsType) => {
     return (
-        <a href='#' className={mod.userDialog} >
-            <div className={mod.userAva}>
+        <a href='#' className={style.userDialog} >
+            <div className={style.userAva}>
                 <img src={props.avatar} alt="" />
             </div>
-            <div className={mod.userName}>
+            <div className={style.userName}>
                 {props.userName}
             </div>
         </a>

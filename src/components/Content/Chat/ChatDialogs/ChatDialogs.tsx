@@ -1,6 +1,7 @@
 import React from 'react';
-import mod from './ChatDialogs.module.scss'
+import style from './ChatDialogs.module.scss'
 import UserDialog from './UserDialog/UserDialog';
+import robert from './../../../../assets/img/robert_ava.jpg'
 
 type ChatType = {
     dialogsData: Array<UserDialogsType>
@@ -18,19 +19,19 @@ const ChatDialogs = (props:ChatType) => {
         .map(d => <UserDialog avatar={d.avatar} userName={d.userName}/>);
 
     return (
-        <div className={mod.dialogsWrapper}>
-            <div className={mod.userInfo}>
-                <div className={mod.userAva}>
-                    <img src="./img/robert_ava.jpg" alt="" />
+        <div className={style.dialogsWrapper}>
+            <div className={style.userInfo}>
+                <div className={style.userAva}>
+                    <img src={robert} alt="" />
                 </div>
-                <div className={mod.userName}>
+                <div className={style.userName}>
                     Robert Downey Jr.
                 </div>
             </div>
-            <div className={mod.title}>
+            <div className={style.title}>
                 Dialogs
             </div>
-            <div className={mod.dialogs}>
+            <div className={style.dialogs}>
                 {UserDialogsElement}
             </div>
         </div>

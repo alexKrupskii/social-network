@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './UserMessage.module.scss';
+import style from './UserMessage.module.scss';
 
 type UserMessageType = {
     avatar: string
@@ -10,12 +10,12 @@ type UserMessageType = {
 
 const UserMessage = (props:UserMessageType) => {
     return (
-        <div className={mod.chatWrapper}>
-            <div className={mod.userWrapper}>
-                <img src={props.avatar} alt="" className={mod.userAva} />
-                <div className={mod.messageTime}>{props.time}</div>
+        <div className={style.chatWrapper}>
+            <div className={style.userWrapper}>
+                <img src={props.avatar} alt="" className={style.userAva} />
+                <div className={style.messageTime}>{props.time}</div>
             </div>
-            <div className={mod.message}>
+            <div className={style.message}>
                 {props.message}
             </div>
         </div>

@@ -1,8 +1,8 @@
 import React from 'react';
-import mod from './Sidebar.module.scss'
+import style from './Sidebar.module.scss'
 import UserInfo from './UserInfo/UserInfo';
 import Friends from './Friends/Friends';
-import {SideBarDataType,} from "../../../../redux/state";
+import {SideBarDataType} from "../../../../redux/state";
 
 
 type StateType = {
@@ -18,8 +18,8 @@ const Sidebar = (props: ProfilePageType) => {
         .map(u => <UserInfo avatar={u.avatar} postsCount={u.postsCount} followersCount={u.followersCount}
                             followingCount={u.followingCount} userName={u.userName}/>)
     return (
-        <div className={mod.sideBar}>
-            <div className={mod.wrapper}>
+        <div className={style.sideBar}>
+            <div className={style.wrapper}>
                 {userInfoElements}
                 <Friends friendsData={props.sideBarData.friendsData}/>
             </div>

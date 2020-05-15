@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import mod from './Post.module.scss'
+import style from './Post.module.scss'
 
 type PostType = {
     id: number
@@ -21,42 +21,45 @@ const Post = (props: PostType) => {
         setLikesCount(likesCount + 1)
     }
 
-    
+
 
     return (
-        <div className={mod.post}>
-            <div className={mod.postInfo}>
-                <div className={mod.userAva}>
+        <div className={style.post}>
+            <div className={style.postInfo}>
+                <div className={style.userAva}>
                     <img src={props.avatar} alt="" />
                 </div>
-                <div className={mod.info}>
-                    <div className={mod.userName}>
+                <div className={style.info}>
+                    <div className={style.userName}>
                         {props.userName}
                     </div>
-                    <div className={mod.time}>
+                    <div className={style.time}>
                         {props.time}
                     </div>
                 </div>
             </div>
-            <img src={props.postImg} className={mod.postImg} alt=""/>
-            <div className={mod.postText}>
+            <img src={props.postImg} className={style.postImg} alt="" />
+            <div className={style.postText}>
                 {props.text}
             </div>
-            <div className={mod.postLinks}>
-                <div className={mod.item}>
-                    <div className={mod.item}>
-                        <a onClick={()=> changeLikesCount()}><img src="./ico/files_post/like.svg" alt="" className={mod.like} /></a>
-                        <div className={mod.itemNum}>{likesCount}</div>
+            <div className={style.postLinks}>
+                <div className={style.itemLeft}>
+                    <div className={style.itemLink}>
+                        <a onClick={() => changeLikesCount()}><img src="./ico/files_post/like.svg" alt="" className={style.like} /></a>
+                        <div className={style.itemNum}>{likesCount}</div>
                     </div>
-                    <div className={mod.item}>
-                        <a href='#'><img src="./ico/files_post/chat.svg" alt="" className={mod.comment} /></a>
-                        <div className={mod.itemNum}>{props.commentCount}</div>
+                    <div className={style.itemLink}>
+                        <a><img src="./ico/files_post/chat.svg" alt="" className={style.comment} /></a>
+                        <div className={style.itemNum}>{props.commentCount}</div>
                     </div>
                 </div>
-                <div className={mod.item}>
-                    <a href='#'><img src="./ico/files_post/links.svg" alt="" className={mod.repost} /></a>
-                    <div className={mod.itemNum}>{props.repostCount}</div>
+                <div className={style.itemRight}>
+                    <div className={style.itemLink}>
+                        <a><img src="./ico/files_post/links.svg" alt="" className={style.repost} /></a>
+                        <div className={style.itemNum}>{props.repostCount}</div>
+                    </div>
                 </div>
+
             </div>
         </div>
     )

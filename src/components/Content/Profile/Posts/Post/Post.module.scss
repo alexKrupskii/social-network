@@ -51,22 +51,45 @@
         //width: max-content;
         display: flex;
         justify-content: space-between;
-        padding-left: 30px;
+        padding: 0 30px;
 
-        .item {
+        .itemLeft {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            width: 150px;
+            
+            .itemLink {
+                display: flex;
+                
 
+                img {
+                    cursor: pointer;
+                    margin-right: 10px;
+                    width: 16px;
+                    &:active {
+                        transition: ease 150ms;
+                        transform: scale(1.3);
+                    }
+                    
+                }
+    
+                .itemNum {
+                    margin-right: 15px;
+                }
+            }  
+        }
 
+        .itemRight {
+            .itemLink {
+                display: flex;
 
-            img {
-                margin-right: 10px;
-                width: 16px;
-            }
-
-            .itemNum {
-                margin-right: 15px;
-            }
+                img {
+                    cursor: pointer;
+                    margin-right: 10px;
+                    width: 16px;
+                }
+            }   
         }
     }
 }

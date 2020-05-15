@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './Friends.module.scss'
+import style from './Friends.module.scss'
 import FriendsItem from './FriendsItem/FriendsItem';
 type SideBarType = {
     friendsData: Array<FriendsItemType>
@@ -13,9 +13,9 @@ const Friends = (props: SideBarType) => {
     let friendsElements = props.friendsData
         .map( f => <FriendsItem avatar={f.avatar} userName={f.userName} />)
     return (
-        <div className={mod.friendsWrapper}>
-            <div className={mod.title}>Friends</div>
-            <div className={mod.userWrapper}>
+        <div className={style.friendsWrapper}>
+            <div className={style.title}>Friends</div>
+            <div className={style.userWrapper}>
                 {friendsElements}
             </div>
         </div>
