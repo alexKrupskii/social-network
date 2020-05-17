@@ -14,7 +14,7 @@ const Content = (props: StateExportType) => {
             <div className={style.content}>
                 <div className={style.content__page}>
                     <Route path='/profile' render = {()=> <Profile profilePage={props.state.profilePage} addPost={props.addPost}/>} />
-                    <Route path='/chat' render = {()=> <Chat chatPage={props.state.chatPage}/>} />
+                    <Route path='/chat' render = {()=> <Chat chatPage={props.state.chatPage} addMessage={props.addMessage}/>} />
                     <Route path='/news' render = {()=> <News />} />
                     <Route path='/music' render = {()=> <Music />} />
                     <Route path='/settings' render = {()=> <Settings />} />

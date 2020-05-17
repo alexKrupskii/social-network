@@ -1,6 +1,7 @@
 export type StateExportType = {
     state: StateType
     addPost: any
+    addMessage: any
 }
 export type StateType = {
     chatPage: ChatPageType
@@ -143,6 +144,16 @@ export function addPost () {
         postImg: ""
     }
     state.profilePage.postData.unshift(newPostElement)
+}
+
+export function addMessage () {
+    let newMessageElement = {
+        id: 1,
+        avatar: require("./../assets/img/robert_ava.jpg"),
+        time: 5 + ":" + 32,
+        message: "Hellow! How are you?"
+    }
+    state.chatPage.messagesPage.messageData.push(newMessageElement)
 }
 
 
