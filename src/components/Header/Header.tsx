@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Header.module.scss';
-import robert from './../../assets/img/robert_ava.jpg'
-
+import robert from './../../assets/img/robert_ava.jpg';
+import {Animated} from 'react-animated-css';
 const Header = () => {
     return (
         <div className={style.wrapper}>
@@ -26,9 +26,13 @@ const Header = () => {
                             </div>
                         </div>
                         <a href='' className={style.user_name}>Robert</a>
+
+                        <Animated animationIn="flipInY" animationOut="fadeOut" isVisible={true} animationInDelay={700} animationInDuration={5000}>
                         <div className={style.userAva}>
                             <img src={robert} alt="" />
                         </div>
+                        </Animated>
+
                     </div>
                 </div>
             </div>
