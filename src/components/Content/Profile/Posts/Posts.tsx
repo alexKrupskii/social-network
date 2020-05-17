@@ -2,22 +2,11 @@ import React from 'react';
 import style from './Posts.module.scss'
 import InputPost from './InputPost/InputPost';
 import Post from './Post/Post';
-
-
+import {PostDataType} from './../../../../redux/state'
 
 type ProfileType = {
-    postData: Array<PostType>
-}
-type PostType = {
-    id: number
-    avatar: string
-    userName: string
-    time: number | string
-    postImg?: string
-    text: string
-    likesCount: number
-    commentCount: number
-    repostCount: number
+    postData: Array<PostDataType>
+    addPost: any
 }
 
 const Posts = (props: ProfileType) => {
@@ -29,7 +18,7 @@ const Posts = (props: ProfileType) => {
     return (
         <div className={style.posts}>
             <div className={style.wrapper}>
-            <InputPost />
+            <InputPost addPost={props.addPost}/>
             {postElements}
             </div>
         </div>

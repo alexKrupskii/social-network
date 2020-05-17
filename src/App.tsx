@@ -7,13 +7,12 @@ import Navigation from "./components/Navigation/Navigation";
 import {Route} from 'react-router-dom';
 import {StateExportType} from './redux/state';
 
-
 const App = (props: StateExportType ) => {
     return (
         <div className="app">
             <Header/>
             <Navigation/>
-            <Content state={props.state} />
+            <Content state={props.state} addPost={props.addPost}/>
             <Route path='/(music|profile|news|settings)' render={() => <Footer/>}/>
         </div>
     );

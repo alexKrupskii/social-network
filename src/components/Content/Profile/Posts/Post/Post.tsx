@@ -15,13 +15,11 @@ type PostType = {
 
 const Post = (props: PostType) => {
 
-    let [likesCount, setLikesCount] = useState(0)
+    let [likesCount, setLikesCount] = useState(0);
 
     let changeLikesCount = () => {
         setLikesCount(likesCount + 1)
-    }
-
-
+    };
 
     return (
         <div className={style.post}>

@@ -4,10 +4,6 @@ import UserInfo from './UserInfo/UserInfo';
 import Friends from './Friends/Friends';
 import {SideBarDataType} from "../../../../redux/state";
 
-
-type StateType = {
-    profilePage: ProfilePageType
-}
 type ProfilePageType = {
     sideBarData: SideBarDataType
 }

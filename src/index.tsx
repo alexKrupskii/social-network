@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
-import state from './redux/state';
+import state, {addPost} from './redux/state';
 
 
 
@@ -12,7 +12,8 @@ let rerenderEntireTree = () =>{
 ReactDOM.render(
     <BrowserRouter>
         <React.StrictMode>
-            <App state={state} />
+            <App state={state}
+                 addPost={addPost}/>
         </React.StrictMode>
     </BrowserRouter>,
         document.getElementById('root')

@@ -1,5 +1,6 @@
 export type StateExportType = {
     state: StateType
+    addPost: any
 }
 export type StateType = {
     chatPage: ChatPageType
@@ -62,7 +63,6 @@ export type DialogsDataType = {
     avatar: string
     userName: string
 }
-
 
 let state: StateType = {
     profilePage: {
@@ -130,6 +130,20 @@ export function addLike(id: number, likesCount: number) {
     })
 }
 
+export function addPost () {
+    let newPostElement = {
+        id: 1,
+        userName: 'Gwyneth Paltrow',
+        avatar: require("./../assets/img/gwyneth_ava.jpg"),
+        time: 10 + ':' + 22,
+        likesCount: 0,
+        commentCount: 0,
+        repostCount: 0,
+        text: "Hello!!!",
+        postImg: ""
+    }
+    state.profilePage.postData.unshift(newPostElement)
+}
 
 
 export default state;
