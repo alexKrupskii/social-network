@@ -1,4 +1,4 @@
-import React, {ChangeEventHandler} from 'react';
+import React, {ChangeEventHandler, MouseEventHandler} from 'react';
 import style from './InputPost.module.scss'
 
 type AddPostType = {

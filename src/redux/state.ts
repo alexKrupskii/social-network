@@ -143,7 +143,7 @@ export function addPost () {
         text: "Hello!!!",
         postImg: ""
     }
-    state.profilePage.postData.unshift(newPostElement)
+    state.profilePage.postData.push(newPostElement)
 }
 
 export function addMessage () {

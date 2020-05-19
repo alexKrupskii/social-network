@@ -17,7 +17,6 @@ const ChatMessages = (props:ChatPageType) => {
 
     let userMessageTitleElement = props.messagesPage.userMessageTitleData
         .map(t => <UserMessageTitle avatar={t.avatar} userName={t.userName}/> )
-
     return (
         <div className={style.messagesWrapper}>
             <div className={style.userDiscussion}>

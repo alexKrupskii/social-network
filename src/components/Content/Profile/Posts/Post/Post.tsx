@@ -43,7 +43,7 @@ const Post = (props: PostType) => {
             <div className={style.postLinks}>
                 <div className={style.itemLeft}>
                     <div className={style.itemLink}>
-                        <a onClick={() => changeLikesCount()}><img src="./ico/files_post/like.svg" alt="" className={style.like} /></a>
+                        <button onClick={() => changeLikesCount()}><img src="./ico/files_post/like.svg" alt="" className={style.like} /></button>
                         <div className={style.itemNum}>{likesCount}</div>
                     </div>
                     <div className={style.itemLink}>
