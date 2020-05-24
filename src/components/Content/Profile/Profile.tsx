@@ -4,17 +4,18 @@ import Sidebar from './Sidebar/Sidebar';
 import Posts from './Posts/Posts';
 import {ProfilePageType} from "../../../redux/state";
 
-type StateType = {
+type PropsType = {
     profilePage: ProfilePageType
-    addPost: any
+    addPost: () => void
+    updateNewPostText: (newText:string|null) => void
 }
 
-const Profile = (props: StateType) => {
+const Profile = (props: PropsType) => {
 
     return (
         <div className={style.profile}>
             <Sidebar sideBarData={props.profilePage.sideBarData}/>
-            <Posts postData={props.profilePage.postData} addPost={props.addPost}/>
+            <Posts postData={props.profilePage.postData} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
         </div>           
     )
 };

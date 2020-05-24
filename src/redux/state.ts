@@ -1,7 +1,9 @@
 export type StateExportType = {
     state: StateType
-    addPost: any
+    addPost: () => void
     addMessage: any
+    updateNewPostText: (newText:string|null) => void
+    updateNewMessageText: (newText: string|null) => void
 }
 export type StateType = {
     chatPage: ChatPageType
@@ -10,6 +12,7 @@ export type StateType = {
 export type ProfilePageType = {
     postData: Array<PostDataType>
     sideBarData: SideBarDataType
+    newPostText: string|null
 }
 export type ChatPageType = {
     messagesPage: MessagesPageType
@@ -18,6 +21,7 @@ export type ChatPageType = {
 export type MessagesPageType = {
     userMessageTitleData: Array<UserMessageTitleDataType>
     messageData: Array<MessageDataType>
+    newMessageText: string|null
 }
 export type SideBarDataType = {
     userInfoData: Array<UserInfoDataType>
@@ -43,7 +47,7 @@ export type PostDataType = {
     userName: string
     time: number | string
     postImg?: string
-    text: string
+    text: string|null
     likesCount: number
     commentCount: number
     repostCount: number
@@ -57,7 +61,7 @@ export type MessageDataType = {
     id?: number
     avatar: string
     time: number | string
-    message: string
+    message: string|null
 }
 export type DialogsDataType = {
     id?: number
@@ -91,6 +95,8 @@ let state: StateType = {
             { id: 3, avatar: require("./../assets/img/gwyneth_ava.jpg"), postImg: require("./../assets/img/download/gwin.jpg"), userName: 'Gwyneth Paltrow', time: '5 minutes ago', text: 'Hello! My name is Gwyneth! I am an actress in Hollywood. And I starred in the world blockbuster Avengers!', likesCount: 0, commentCount: 2880, repostCount: 6888 },
         ],
 
+        newPostText:''
+
     },
 
     chatPage: {
@@ -116,7 +122,9 @@ let state: StateType = {
             messageData: [
                 { id: 1, avatar: require("./../assets/img/robert_ava.jpg"), time: 5 + ":" + 32, message: "Hellow! How are you? I heard you starred in a new movie." },
                 { id: 2, avatar: require("./../assets/img/gwyneth_ava.jpg"), time: 5 + ":" + 44, message: "Hellow! I starred in the world blockbuster Avengers!" }
-            ]
+            ],
+
+            newMessageText: ''
         }
     },
 };
@@ -132,28 +140,46 @@ export function addLike(id: number, likesCount: number) {
 }
 
 export function addPost () {
-    let newPostElement = {
-        id: 1,
-        userName: 'Gwyneth Paltrow',
-        avatar: require("./../assets/img/gwyneth_ava.jpg"),
-        time: 10 + ':' + 22,
-        likesCount: 0,
-        commentCount: 0,
-        repostCount: 0,
-        text: "Hello!!!",
-        postImg: ""
+    if (state.profilePage.newPostText == '') {
+        return false
+    } else {
+        let newPostElement = {
+            id: 1,
+            userName: 'Gwyneth Paltrow',
+            avatar: require("./../assets/img/gwyneth_ava.jpg"),
+            time: 10 + ':' + 22,
+            likesCount: 0,
+            commentCount: 0,
+            repostCount: 0,
+            text: state.profilePage.newPostText,
+            postImg: ""
+        }
+        state.profilePage.postData.push(newPostElement);
+        state.profilePage.newPostText = '';
     }
-    state.profilePage.postData.push(newPostElement)
+}
+
+export function updateNewPostText (newText:string|null) {
+    state.profilePage.newPostText = newText;
 }
 
 export function addMessage () {
-    let newMessageElement = {
-        id: 1,
-        avatar: require("./../assets/img/robert_ava.jpg"),
-        time: 5 + ":" + 32,
-        message: "Hellow! How are you?"
+    if (state.chatPage.messagesPage.newMessageText == '') {
+        return false
+    } else {
+        let newMessageElement = {
+            id: 1,
+            avatar: require("./../assets/img/robert_ava.jpg"),
+            time: 5 + ":" + 32,
+            message: state.chatPage.messagesPage.newMessageText
+        }
+        state.chatPage.messagesPage.messageData.push(newMessageElement);
+        state.chatPage.messagesPage.newMessageText = '';
     }
-    state.chatPage.messagesPage.messageData.push(newMessageElement)
+}
+
+export function updateNewMessageText (newText: string|null) {
+    state.chatPage.messagesPage.newMessageText = newText;
 }
 
 

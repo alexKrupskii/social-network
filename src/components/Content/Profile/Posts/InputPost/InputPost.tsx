@@ -1,31 +1,29 @@
-import React, {ChangeEventHandler, MouseEventHandler} from 'react';
-import style from './InputPost.module.scss'
+import React from 'react';
+import style from './InputPost.module.scss';
 
-type AddPostType = {
-    addPost: any
+type PropsType = {
+    addPost: () => void
+    updateNewPostText: (newPostText:string|null) => void
 }
 
-const InputPost = (props:any) => {
+const InputPost = (props:PropsType) => {
 
-    type OnChange = {
-        onChange: void
-    }
-
-    let newPostElement = React.createRef();
+    let newPostElement = React.createRef<HTMLInputElement>();
 
     let addPost = () => {
-        props.addPost()
-    }
+        props.addPost();
+    };
 
     let onPostChange = () => {
-        props.updateNewPostText();
-    }
+        let newPostText = newPostElement.current && newPostElement.current.value;
+            props.updateNewPostText(newPostText);
+    };
 
     return (
         <div className={style.inputPost}>
             <div className={style.title}>New post</div>
             <div className={style.newPost}>
-                <input onChange={onPostChange} value={props.newPostText} placeholder='Say something here...' />
+                <input onChange={onPostChange} ref={newPostElement} placeholder='Say something here...' />
             </div>
             <div className={style.addPost}>
                 <a href='#' onClick={addPost} className={style.btnPost}>Post</a>

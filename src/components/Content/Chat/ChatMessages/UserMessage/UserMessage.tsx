@@ -4,7 +4,7 @@ import style from './UserMessage.module.scss';
 type UserMessageType = {
     avatar: string
     time: string|number
-    message: string
+    message: string|null
 }
 
 

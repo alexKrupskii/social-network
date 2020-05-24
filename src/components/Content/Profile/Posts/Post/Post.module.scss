@@ -62,17 +62,28 @@
             .itemLink {
                 display: flex;
 
-                img {
+                button {
+                    border: none;
+                    outline: none;
+                    height: max-content;
+                    width: min-content;
+                    padding: 0;
+                    background-color: white;
                     cursor: pointer;
-                    margin-right: 10px;
-                    width: 16px;
-                    &:active {
+
+                    &:active img {
                         transition: ease 150ms;
                         transform: scale(1.3);
                     }
-                    
+
+                    img {
+
+                        margin-right: 10px;
+                        width: 16px;
+
+                    }
                 }
-    
+
                 .itemNum {
                     margin-right: 15px;
                 }
@@ -83,10 +94,24 @@
             .itemLink {
                 display: flex;
 
-                img {
+                button {
+                    border: none;
+                    outline: none;
+                    height: max-content;
+                    width: min-content;
+                    padding: 0;
+                    background-color: white;
                     cursor: pointer;
-                    margin-right: 10px;
-                    width: 16px;
+
+                    &:active img {
+                        transition: ease 150ms;
+                        transform: scale(1.3);
+                    }
+
+                    img {
+                        margin-right: 10px;
+                        width: 16px;
+                    }
                 }
             }   
         }

@@ -8,13 +8,22 @@ import Profile from "./Profile/Profile";
 import {Route} from 'react-router-dom';
 import {StateExportType} from './../../redux/state'
 
+
+
 const Content = (props: StateExportType) => {
     return (
         <div className='container'>
             <div className={style.content}>
                 <div className={style.content__page}>
-                    <Route path='/profile' render = {()=> <Profile profilePage={props.state.profilePage} addPost={props.addPost}/>} />
-                    <Route path='/chat' render = {()=> <Chat chatPage={props.state.chatPage} addMessage={props.addMessage}/>} />
+                    <Route path='/profile' render = {()=> <Profile
+                        profilePage={props.state.profilePage}
+                        addPost={props.addPost}
+                        updateNewPostText={props.updateNewPostText}
+                        />} />
+                    <Route path='/chat' render = {()=> <Chat
+                        chatPage={props.state.chatPage}
+                        addMessage={props.addMessage}
+                        updateNewMessageText={props.updateNewMessageText}/>} />
                     <Route path='/news' render = {()=> <News />} />
                     <Route path='/music' render = {()=> <Music />} />
                     <Route path='/settings' render = {()=> <Settings />} />

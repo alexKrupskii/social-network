@@ -7,7 +7,8 @@ import {MessagesPageType} from './../../../../redux/state';
 
 type ChatPageType = {
     messagesPage: MessagesPageType
-    addMessage: any
+    addMessage: () => void
+    updateNewMessageText: (newMessageText: string|null) => void;
 }
 
 const ChatMessages = (props:ChatPageType) => {
@@ -29,7 +30,7 @@ const ChatMessages = (props:ChatPageType) => {
             <div className={style.chat}>
                 {userMessageElements}
             </div>
-            <InputMessage addMessage={props.addMessage}/>
+            <InputMessage addMessage={props.addMessage} updateNewMessageText={props.updateNewMessageText}/>
         </div>
     )
 };

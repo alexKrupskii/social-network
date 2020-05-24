@@ -5,14 +5,20 @@ import Content from './components/Content/Content';
 import Footer from './components/Footer/Footer';
 import Navigation from "./components/Navigation/Navigation";
 import {Route} from 'react-router-dom';
-import {addMessage, StateExportType} from './redux/state';
+import {StateExportType} from './redux/state';
+
+
 
 const App = (props: StateExportType ) => {
     return (
         <div className="app">
             <Header/>
             <Navigation/>
-            <Content state={props.state} addPost={props.addPost} addMessage={props.addMessage}/>
+            <Content state={props.state}
+                     addPost={props.addPost}
+                     addMessage={props.addMessage}
+                     updateNewPostText={props.updateNewPostText}
+                     updateNewMessageText={props.updateNewMessageText}/>
             <Route path='/(music|profile|news|settings)' render={() => <Footer/>}/>
         </div>
     );

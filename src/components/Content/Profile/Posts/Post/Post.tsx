@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from './Post.module.scss'
+import style from './Post.module.scss';
 
 type PostType = {
     id: number
@@ -7,7 +7,7 @@ type PostType = {
     userName: string
     time: number | string
     postImg?: string
-    text: string
+    text: string|null
     likesCount: number
     commentCount: number
     repostCount: number
@@ -43,21 +43,20 @@ const Post = (props: PostType) => {
             <div className={style.postLinks}>
                 <div className={style.itemLeft}>
                     <div className={style.itemLink}>
-                        <button onClick={() => changeLikesCount()}><img src="./ico/files_post/like.svg" alt="" className={style.like} /></button>
+                        <button type="button"  disabled={likesCount >= 1 } onClick={changeLikesCount}><img src="./ico/files_post/like.svg" alt="" className={style.like} /></button>
                         <div className={style.itemNum}>{likesCount}</div>
                     </div>
                     <div className={style.itemLink}>
-                        <a><img src="./ico/files_post/chat.svg" alt="" className={style.comment} /></a>
+                        <button><img src="./ico/files_post/chat.svg" alt="" className={style.comment} /></button>
                         <div className={style.itemNum}>{props.commentCount}</div>
                     </div>
                 </div>
                 <div className={style.itemRight}>
                     <div className={style.itemLink}>
-                        <a><img src="./ico/files_post/links.svg" alt="" className={style.repost} /></a>
+                        <button><img src="./ico/files_post/links.svg" alt="" className={style.repost} /></button>
                         <div className={style.itemNum}>{props.repostCount}</div>
                     </div>
                 </div>
-
             </div>
         </div>
     )

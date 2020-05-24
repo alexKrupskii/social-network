@@ -6,14 +6,15 @@ import {ChatPageType} from "../../../redux/state";
 
 type StateType = {
     chatPage: ChatPageType
-    addMessage: any
+    addMessage: () => void
+    updateNewMessageText: (newMessageText: string|null) => void;
 }
 
 const Chat = (props: StateType) => {
     return (
         <div className={style.chatWrapper}>
             <ChatDialogs dialogsData={props.chatPage.dialogsData}/>
-            <ChatMessages messagesPage={props.chatPage.messagesPage} addMessage={props.addMessage}/>
+            <ChatMessages messagesPage={props.chatPage.messagesPage} addMessage={props.addMessage} updateNewMessageText={props.updateNewMessageText}/>
         </div>
     )
 };
