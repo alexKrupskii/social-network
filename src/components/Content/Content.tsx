@@ -8,8 +8,6 @@ import Profile from "./Profile/Profile";
 import {Route} from 'react-router-dom';
 import {StateExportType} from './../../redux/state'
 
-
-
 const Content = (props: StateExportType) => {
     return (
         <div className='container'>

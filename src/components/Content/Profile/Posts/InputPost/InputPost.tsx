@@ -3,7 +3,8 @@ import style from './InputPost.module.scss';
 
 type PropsType = {
     addPost: () => void
-    updateNewPostText: (newPostText:string|null) => void
+    updateNewPostText: (newText: string | undefined) => void
+    newPostText: string|undefined
 }
 
 const InputPost = (props:PropsType) => {
@@ -15,18 +16,19 @@ const InputPost = (props:PropsType) => {
     };
 
     let onPostChange = () => {
-        let newPostText = newPostElement.current && newPostElement.current.value;
-            props.updateNewPostText(newPostText);
+        let newText = newPostElement.current?.value;
+            props.updateNewPostText(newText);
     };
+
 
     return (
         <div className={style.inputPost}>
             <div className={style.title}>New post</div>
             <div className={style.newPost}>
-                <input onChange={onPostChange} ref={newPostElement} placeholder='Say something here...' />
+                <input onChange={onPostChange} ref={newPostElement} value={props.newPostText} placeholder='Say something here...' />
             </div>
             <div className={style.addPost}>
-                <a href='#' onClick={addPost} className={style.btnPost}>Post</a>
+                <button onClick={addPost} className={style.btnPost}>Post</button>
                 <div className={style.addFile}>
                     <a href='#' className={style.item}>
                         <img src="./ico/files_post/emoji.svg" alt="" />

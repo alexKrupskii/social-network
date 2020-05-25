@@ -41,12 +41,14 @@
     .inputBtn {
         margin-right: 10px;
 
-        a {
+        button {
             text-decoration: none;
             padding: 8px 20px;
             background-color: $main-color;
             border-radius: 10px;
             color: #fff;
+            outline: none;
+            border: none;
         }
     }
 }

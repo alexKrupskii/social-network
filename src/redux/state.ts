@@ -1,9 +1,14 @@
+let rerenderEntireTree = () => {
+
+}
+
+
 export type StateExportType = {
     state: StateType
     addPost: () => void
     addMessage: any
-    updateNewPostText: (newText:string|null) => void
-    updateNewMessageText: (newText: string|null) => void
+    updateNewPostText: (newText:string|undefined) => void
+    updateNewMessageText: (newText: string|undefined) => void
 }
 export type StateType = {
     chatPage: ChatPageType
@@ -12,7 +17,7 @@ export type StateType = {
 export type ProfilePageType = {
     postData: Array<PostDataType>
     sideBarData: SideBarDataType
-    newPostText: string|null
+    newPostText: string|undefined
 }
 export type ChatPageType = {
     messagesPage: MessagesPageType
@@ -21,7 +26,7 @@ export type ChatPageType = {
 export type MessagesPageType = {
     userMessageTitleData: Array<UserMessageTitleDataType>
     messageData: Array<MessageDataType>
-    newMessageText: string|null
+    newMessageText: string|undefined
 }
 export type SideBarDataType = {
     userInfoData: Array<UserInfoDataType>
@@ -47,7 +52,7 @@ export type PostDataType = {
     userName: string
     time: number | string
     postImg?: string
-    text: string|null
+    text: string | undefined
     likesCount: number
     commentCount: number
     repostCount: number
@@ -61,7 +66,7 @@ export type MessageDataType = {
     id?: number
     avatar: string
     time: number | string
-    message: string|null
+    message: string|undefined
 }
 export type DialogsDataType = {
     id?: number
@@ -140,7 +145,7 @@ export function addLike(id: number, likesCount: number) {
 }
 
 export function addPost () {
-    if (state.profilePage.newPostText == '') {
+    if (state.profilePage.newPostText === '') {
         return false
     } else {
         let newPostElement = {
@@ -156,15 +161,17 @@ export function addPost () {
         }
         state.profilePage.postData.push(newPostElement);
         state.profilePage.newPostText = '';
+        rerenderEntireTree();
     }
 }
 
-export function updateNewPostText (newText:string|null) {
+export function updateNewPostText (newText: string | undefined) {
     state.profilePage.newPostText = newText;
+    rerenderEntireTree();
 }
 
 export function addMessage () {
-    if (state.chatPage.messagesPage.newMessageText == '') {
+    if (state.chatPage.messagesPage.newMessageText === '') {
         return false
     } else {
         let newMessageElement = {
@@ -175,11 +182,17 @@ export function addMessage () {
         }
         state.chatPage.messagesPage.messageData.push(newMessageElement);
         state.chatPage.messagesPage.newMessageText = '';
+        rerenderEntireTree();
     }
 }
 
-export function updateNewMessageText (newText: string|null) {
+export function updateNewMessageText (newText: string | undefined) {
     state.chatPage.messagesPage.newMessageText = newText;
+    rerenderEntireTree();
+}
+
+export const subscribe = (observer:any) => {
+    rerenderEntireTree = observer;
 }
 
 

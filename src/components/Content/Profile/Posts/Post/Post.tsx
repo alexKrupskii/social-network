@@ -7,7 +7,7 @@ type PostType = {
     userName: string
     time: number | string
     postImg?: string
-    text: string|null
+    text: string|undefined
     likesCount: number
     commentCount: number
     repostCount: number

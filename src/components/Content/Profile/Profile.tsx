@@ -7,7 +7,7 @@ import {ProfilePageType} from "../../../redux/state";
 type PropsType = {
     profilePage: ProfilePageType
     addPost: () => void
-    updateNewPostText: (newText:string|null) => void
+    updateNewPostText: (newText:string|undefined) => void
 }
 
 const Profile = (props: PropsType) => {
@@ -15,7 +15,7 @@ const Profile = (props: PropsType) => {
     return (
         <div className={style.profile}>
             <Sidebar sideBarData={props.profilePage.sideBarData}/>
-            <Posts postData={props.profilePage.postData} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
+            <Posts postData={props.profilePage.postData} addPost={props.addPost} updateNewPostText={props.updateNewPostText} newPostText={props.profilePage.newPostText}/>
         </div>           
     )
 };

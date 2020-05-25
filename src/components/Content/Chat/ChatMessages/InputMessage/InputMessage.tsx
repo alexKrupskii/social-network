@@ -3,7 +3,8 @@ import style from './InputMessage.module.scss';
 
 type PropsType = {
     addMessage: () => void
-    updateNewMessageText: (newMessageText: string|null) => void;
+    updateNewMessageText: (newMessageText: string|undefined) => void;
+    newMessageText: string|undefined
 }
 
 const InputMessage = (props: PropsType) => {
@@ -15,8 +16,8 @@ const InputMessage = (props: PropsType) => {
     }
 
     let onMessageChange = () => {
-        let newMessageText = newMessageElement.current && newMessageElement.current.value;
-        props.updateNewMessageText(newMessageText);
+        let newText = newMessageElement.current?.value;
+        props.updateNewMessageText(newText);
     }
 
     return (
@@ -24,9 +25,9 @@ const InputMessage = (props: PropsType) => {
             <div className={style.emoji}>
                 <img src="./ico/files_post/emoji.svg" alt="" />
             </div>
-            <input type="text" ref={newMessageElement} onChange={onMessageChange} placeholder='Type your message...' />
+            <input type="text" ref={newMessageElement} onChange={onMessageChange} value={props.newMessageText} placeholder='Type your message...' />
             <div className={style.inputBtn}>
-                <a onClick={addMessage} href="#" >Send</a>
+                <button onClick={addMessage} >Send</button>
             </div>
         </div>
     )

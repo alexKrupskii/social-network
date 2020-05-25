@@ -7,7 +7,8 @@ import {PostDataType} from './../../../../redux/state'
 type ProfileType = {
     postData: Array<PostDataType>
     addPost: () => void
-    updateNewPostText: (newText:string|null) => void
+    updateNewPostText: (newText:string|undefined) => void
+    newPostText: string|undefined
 }
 
 const Posts = (props: ProfileType) => {
@@ -19,7 +20,7 @@ const Posts = (props: ProfileType) => {
     return (
         <div className={style.posts}>
             <div className={style.wrapper}>
-            <InputPost addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
+            <InputPost addPost={props.addPost} updateNewPostText={props.updateNewPostText} newPostText={props.newPostText}/>
             {postElements}
             </div>
         </div>
