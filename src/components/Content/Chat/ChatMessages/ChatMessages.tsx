@@ -12,15 +12,15 @@ type ChatPageType = {
     updateNewMessageText: (newMessageText: string) => void;
     newMessageText: string
     deleteMessage: (id: string) => void
-    messages: Array<MessageDataType>
+    messages: Array<messagesType>
     
 }
-// type messagesType = {
-//     avatar: string
-//     time: string | number
-//     message: string
-//     id: number
-// }
+type messagesType = {
+    avatar: string
+    time: string | number
+    message: string
+    id: string
+ }
 
 
 
