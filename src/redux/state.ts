@@ -1,32 +1,36 @@
+import {v1} from "uuid";
+
 let rerenderEntireTree = () => {
 
 }
 
-
 export type StateExportType = {
     state: StateType
     addPost: () => void
-    addMessage: any
-    updateNewPostText: (newText:string|undefined) => void
-    updateNewMessageText: (newText: string|undefined) => void
+    addMessage: () => void
+    updateNewPostText: (newText:string) => void
+    updateNewMessageText: (newText: string) => void
 }
 export type StateType = {
     chatPage: ChatPageType
     profilePage: ProfilePageType
+    messageHookData: Array<MessageHookDataType>
 }
 export type ProfilePageType = {
     postData: Array<PostDataType>
     sideBarData: SideBarDataType
-    newPostText: string|undefined
+    newPostText: string
 }
 export type ChatPageType = {
     messagesPage: MessagesPageType
     dialogsData: Array<DialogsDataType>
+    
 }
+
 export type MessagesPageType = {
     userMessageTitleData: Array<UserMessageTitleDataType>
     messageData: Array<MessageDataType>
-    newMessageText: string|undefined
+    newMessageText: string
 }
 export type SideBarDataType = {
     userInfoData: Array<UserInfoDataType>
@@ -52,7 +56,7 @@ export type PostDataType = {
     userName: string
     time: number | string
     postImg?: string
-    text: string | undefined
+    text: string
     likesCount: number
     commentCount: number
     repostCount: number
@@ -63,15 +67,22 @@ export type UserMessageTitleDataType = {
     userName: string
 }
 export type MessageDataType = {
-    id?: number
+    id: string
     avatar: string
     time: number | string
-    message: string|undefined
+    message: string
 }
 export type DialogsDataType = {
     id?: number
     avatar: string
     userName: string
+}
+
+export type MessageHookDataType = {
+    id: number
+    avatar: string
+    time: string | number
+    message: string
 }
 
 let state: StateType = {
@@ -100,7 +111,7 @@ let state: StateType = {
             { id: 3, avatar: require("./../assets/img/gwyneth_ava.jpg"), postImg: require("./../assets/img/download/gwin.jpg"), userName: 'Gwyneth Paltrow', time: '5 minutes ago', text: 'Hello! My name is Gwyneth! I am an actress in Hollywood. And I starred in the world blockbuster Avengers!', likesCount: 0, commentCount: 2880, repostCount: 6888 },
         ],
 
-        newPostText:''
+        newPostText: ''
 
     },
 
@@ -125,13 +136,22 @@ let state: StateType = {
             ],
 
             messageData: [
-                { id: 1, avatar: require("./../assets/img/robert_ava.jpg"), time: 5 + ":" + 32, message: "Hellow! How are you? I heard you starred in a new movie." },
-                { id: 2, avatar: require("./../assets/img/gwyneth_ava.jpg"), time: 5 + ":" + 44, message: "Hellow! I starred in the world blockbuster Avengers!" }
+                { id: v1(), avatar: require("./../assets/img/robert_ava.jpg"), time: 5 + ":" + 32, message: "Hellow! How are you? I heard you starred in a new movie." },
+                { id: v1(), avatar: require("./../assets/img/gwyneth_ava.jpg"), time: 5 + ":" + 44, message: "Hellow! I starred in the world blockbuster Avengers!" },
+                { id: v1(), avatar: require("./../assets/img/robert_ava.jpg"), time: 7 + ":" + 10, message: "This is awesome!" },
+                { id: v1(), avatar: require("./../assets/img/robert_ava.jpg"), time: 7 + ":" + 44, message: "I'm very happy for you!" },
+                { id: v1(), avatar: require("./../assets/img/gwyneth_ava.jpg"), time: 8 + ":" + 15, message: "Thank you very much! Very nice to hear!" },
+                { id: v1(), avatar: require("./../assets/img/robert_ava.jpg"), time: 8 + ":" + 22, message: "I'll be doing a new movie soon, too!" },
+                { id: v1(), avatar: require("./../assets/img/gwyneth_ava.jpg"), time: 10 + ":" + 20, message: "Cool! And what is it called?" }
             ],
 
             newMessageText: ''
         }
     },
+
+    messageHookData: [
+        
+    ]
 };
 
 export function addLike(id: number, likesCount: number) {
@@ -165,7 +185,7 @@ export function addPost () {
     }
 }
 
-export function updateNewPostText (newText: string | undefined) {
+export function updateNewPostText (newText: string) {
     state.profilePage.newPostText = newText;
     rerenderEntireTree();
 }
@@ -175,7 +195,7 @@ export function addMessage () {
         return false
     } else {
         let newMessageElement = {
-            id: 1,
+            id: v1(),
             avatar: require("./../assets/img/robert_ava.jpg"),
             time: 5 + ":" + 32,
             message: state.chatPage.messagesPage.newMessageText
@@ -186,12 +206,12 @@ export function addMessage () {
     }
 }
 
-export function updateNewMessageText (newText: string | undefined) {
+export function updateNewMessageText (newText: string) {
     state.chatPage.messagesPage.newMessageText = newText;
     rerenderEntireTree();
 }
 
-export const subscribe = (observer:any) => {
+export const subscribe = (observer: ()=> void) => {
     rerenderEntireTree = observer;
 }
 

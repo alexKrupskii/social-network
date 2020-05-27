@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
-import state, {addMessage, addPost, StateType, subscribe, updateNewMessageText, updateNewPostText} from './redux/state';
+import state, {addMessage, addPost, subscribe, updateNewMessageText, updateNewPostText} from './redux/state';
 
 
 let rerenderEntireTree = () => {

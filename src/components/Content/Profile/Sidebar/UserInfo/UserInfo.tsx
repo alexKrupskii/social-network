@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './UserInfo.module.scss'
-import {Animated} from "react-animated-css";
+// import {Animated} from "react-animated-css";
 
 type UserInfoType = {
     id?: number
@@ -16,11 +16,11 @@ const UserInfo = (props: UserInfoType) => {
         <div className={style.profileWrapper}>
             <div className={style.ava_links}>
 
-                <Animated animationIn="wobble" animationOut="fadeOut" isVisible={true} animationInDelay={400} animationInDuration={1000} >
+                {/* <Animated animationIn="wobble" animationOut="fadeOut" isVisible={true} animationInDelay={400} animationInDuration={1000} > */}
                 <div className={style.userAva}>
                     <img src={props.avatar} alt="" />
                 </div>
-                </Animated>
+                {/* </Animated> */}
 
                 <div className={style.statistic}>
                     <div className={style.statistic__wrapper}>

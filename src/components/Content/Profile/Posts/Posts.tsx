@@ -7,8 +7,8 @@ import {PostDataType} from './../../../../redux/state'
 type ProfileType = {
     postData: Array<PostDataType>
     addPost: () => void
-    updateNewPostText: (newText:string|undefined) => void
-    newPostText: string|undefined
+    updateNewPostText: (newText:string) => void
+    newPostText: string
 }
 
 const Posts = (props: ProfileType) => {

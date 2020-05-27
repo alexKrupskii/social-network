@@ -19,6 +19,7 @@ const Content = (props: StateExportType) => {
                         updateNewPostText={props.updateNewPostText}
                         />} />
                     <Route path='/chat' render = {()=> <Chat
+                        messageHookData={props.state.messageHookData}
                         chatPage={props.state.chatPage}
                         addMessage={props.addMessage}
                         updateNewMessageText={props.updateNewMessageText}/>} />

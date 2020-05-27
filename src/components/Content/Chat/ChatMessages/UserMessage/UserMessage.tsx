@@ -1,25 +1,20 @@
 import React from 'react';
-import style from './UserMessage.module.scss';
+// import style from './UserMessage.module.scss';
 
-type UserMessageType = {
-    avatar: string
-    time: string|number
-    message: string|undefined
-}
+// type UserMessageType = {
+//     avatar: string
+//     time: string | number
+//     message: string
+//     deleteMessage: (id:number) => void
 
+// }
 
-const UserMessage = (props:UserMessageType) => {
-    return (
-        <div className={style.chatWrapper}>
-            <div className={style.userWrapper}>
-                <img src={props.avatar} alt="" className={style.userAva} />
-                <div className={style.messageTime}>{props.time}</div>
-            </div>
-            <div className={style.message}>
-                {props.message}
-            </div>
+const UserMessage = () => {
+   return (
+        <div>
+
         </div>
     )
-};
+ };
 
 export default UserMessage;

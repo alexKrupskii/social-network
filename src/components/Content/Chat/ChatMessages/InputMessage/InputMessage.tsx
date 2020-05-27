@@ -3,8 +3,8 @@ import style from './InputMessage.module.scss';
 
 type PropsType = {
     addMessage: () => void
-    updateNewMessageText: (newMessageText: string|undefined) => void;
-    newMessageText: string|undefined
+    updateNewMessageText: (newMessageText: string) => void;
+    newMessageText: string
 }
 
 const InputMessage = (props: PropsType) => {
@@ -17,7 +17,7 @@ const InputMessage = (props: PropsType) => {
 
     let onMessageChange = () => {
         let newText = newMessageElement.current?.value;
-        props.updateNewMessageText(newText);
+        props.updateNewMessageText(newText!);
     }
 
     return (
@@ -27,7 +27,7 @@ const InputMessage = (props: PropsType) => {
             </div>
             <input type="text" ref={newMessageElement} onChange={onMessageChange} value={props.newMessageText} placeholder='Type your message...' />
             <div className={style.inputBtn}>
-                <button onClick={addMessage} >Send</button>
+                <button onClick={addMessage}>Send</button>
             </div>
         </div>
     )

@@ -3,8 +3,8 @@ import style from './InputPost.module.scss';
 
 type PropsType = {
     addPost: () => void
-    updateNewPostText: (newText: string | undefined) => void
-    newPostText: string|undefined
+    updateNewPostText: (newText: string) => void
+    newPostText: string
 }
 
 const InputPost = (props:PropsType) => {
@@ -17,7 +17,7 @@ const InputPost = (props:PropsType) => {
 
     let onPostChange = () => {
         let newText = newPostElement.current?.value;
-            props.updateNewPostText(newText);
+            props.updateNewPostText(newText!);
     };
 
 
