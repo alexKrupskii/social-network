@@ -15,14 +15,10 @@ const Content = (props: StateExportType) => {
                 <div className={style.content__page}>
                     <Route path='/profile' render = {()=> <Profile
                         profilePage={props.state.profilePage}
-                        addPost={props.addPost}
-                        updateNewPostText={props.updateNewPostText}
-                        />} />
+                        dispatch={props.dispatch}/>} />
                     <Route path='/chat' render = {()=> <Chat
-                        messageHookData={props.state.messageHookData}
                         chatPage={props.state.chatPage}
-                        addMessage={props.addMessage}
-                        updateNewMessageText={props.updateNewMessageText}/>} />
+                        dispatch={props.dispatch}/>} />
                     <Route path='/news' render = {()=> <News />} />
                     <Route path='/music' render = {()=> <Music />} />
                     <Route path='/settings' render = {()=> <Settings />} />

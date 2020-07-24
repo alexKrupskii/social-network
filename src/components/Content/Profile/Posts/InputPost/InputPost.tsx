@@ -1,31 +1,38 @@
-import React from 'react';
+import React, {KeyboardEvent, ChangeEvent} from 'react';
 import style from './InputPost.module.scss';
+import {addPostAC, DispatchType, updateNewPostTextAC} from '../../../../../redux/state';
 
 type PropsType = {
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
     newPostText: string
+    dispatch: DispatchType
 }
+
 
 const InputPost = (props:PropsType) => {
 
-    let newPostElement = React.createRef<HTMLInputElement>();
+    let newPostElement = props.newPostText
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch(addPostAC(props.newPostText));
     };
 
-    let onPostChange = () => {
-        let newText = newPostElement.current?.value;
-            props.updateNewPostText(newText!);
+    let onPostChange = (event: ChangeEvent<HTMLInputElement>) => {
+        let newText = event.target.value;
+        props.dispatch(updateNewPostTextAC(newText));
     };
+
+    let onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.charCode === 13) {
+            addPost()
+        }
+    }
 
 
     return (
         <div className={style.inputPost}>
             <div className={style.title}>New post</div>
             <div className={style.newPost}>
-                <input onChange={onPostChange} ref={newPostElement} value={props.newPostText} placeholder='Say something here...' />
+                <input onChange={onPostChange} onKeyPress={onKeyPressHandler} value={newPostElement} placeholder='Say something here...' />
             </div>
             <div className={style.addPost}>
                 <button onClick={addPost} className={style.btnPost}>Post</button>

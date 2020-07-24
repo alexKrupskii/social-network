@@ -1,33 +1,21 @@
 import React from 'react';
 import style from './ChatMessages.module.scss'
-// import UserMessage from './UserMessage/UserMessage';
+import UserMessage from './UserMessage/UserMessage';
 import InputMessage from './InputMessage/InputMessage';
 import UserMessageTitle from './UserMessageTitle/UserMessageTitle';
-import { MessagesPageType, MessageDataType } from './../../../../redux/state';
-import remove from './../../../../assets/img/ico/remove.svg'
+import {DispatchType, MessagesPageType} from './../../../../redux/state';
+
 
 type ChatPageType = {
     messagesPage: MessagesPageType
-    addMessage: () => void
-    updateNewMessageText: (newMessageText: string) => void;
     newMessageText: string
-    deleteMessage: (id: string) => void
-    messages: Array<messagesType>
-    
+    dispatch: DispatchType
 }
-type messagesType = {
-    avatar: string
-    time: string | number
-    message: string
-    id: string
- }
-
-
-
 
 const ChatMessages = (props: ChatPageType) => {
 
-
+    let messagesElements = props.messagesPage.messageData
+        .map(m => <UserMessage id={m.id} avatar={m.avatar} time={m.time} message={m.message} />)
 
     let userMessageTitleElement = props.messagesPage.userMessageTitleData
         .map(t => <UserMessageTitle avatar={t.avatar} userName={t.userName} />)
@@ -41,24 +29,10 @@ const ChatMessages = (props: ChatPageType) => {
                 </div>
             </div>
             <div className={style.chat}>
-                {props.messages
-                    .map(m => <div key={m.id} className={style.chatWrapper}>
-                    <div className={style.messageWrapper}>
-                        <div className={style.userWrapper}>
-                            <img src={m.avatar} alt="" className={style.userAva} />
-                            <div className={style.messageTime}>{m.time}</div>
-                        </div>
-                        <div className={style.message}>
-                            {m.message}
-                        </div>
-                    </div>
-                    <button onClick={() => {props.deleteMessage(m.id) }} className={style.deleteMsg}>
-                        <img className={style.deleteIcon} src={remove} alt="" />
-                    </button>
-                </div>)}
-                    
+                {messagesElements}  
             </div>
-            <InputMessage addMessage={props.addMessage} updateNewMessageText={props.updateNewMessageText} newMessageText={props.newMessageText} />
+            <InputMessage dispatch={props.dispatch}
+                          newMessageText={props.newMessageText} />
         </div>
     )
 };

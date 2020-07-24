@@ -55,64 +55,6 @@
         padding: 20px;
         overflow-y: auto;
 
-        .chatWrapper { 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: min-content;
-            margin-bottom: 25px;
         
-            &:hover .deleteMsg {
-                opacity: 0.9;
-                transition: opacity ease-in-out 300ms;
-            }
-        
-            .messageWrapper {
-                display: flex;
-        
-                .userWrapper {
-                    text-align: center;
-                    
-                    .userAva {
-                        width: 40px;
-                        border-radius: 10px;
-                    }
-            
-                    .messageTime {
-                        font-size: 12px;
-                    }
-                }
-                
-                .message {
-                    height: min-content;
-                    padding: 12px 18px;
-                    background-color: rgb(194, 233, 253);
-                    border: 1px solid rgba(190, 190, 190, 0.329);
-                    border-radius: 10px;
-                    margin-left: 15px;
-                    line-height: 1.7;
-                    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.164);
-                }
-            }
-            .deleteMsg {
-                cursor: pointer;
-                background: transparent;
-                opacity: 0;
-                outline: none;
-                border: none;
-                width: 30px;
-                height: 30px;
-                transition-property: all;
-                transition: all ease 300ms;
-
-                .deleteIcon {
-                    width: 20px;
-                    &:active {
-                        transform: scale(0.8);
-                        transition: all ease 150ms;
-                    }
-                }
-            }
-        }
     }
 }

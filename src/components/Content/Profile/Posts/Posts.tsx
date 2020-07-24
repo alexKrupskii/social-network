@@ -2,13 +2,12 @@ import React from 'react';
 import style from './Posts.module.scss'
 import InputPost from './InputPost/InputPost';
 import Post from './Post/Post';
-import {PostDataType} from './../../../../redux/state'
+import {PostDataType, DispatchType} from './../../../../redux/state'
 
 type ProfileType = {
     postData: Array<PostDataType>
-    addPost: () => void
-    updateNewPostText: (newText:string) => void
     newPostText: string
+    dispatch: DispatchType
 }
 
 const Posts = (props: ProfileType) => {
@@ -20,7 +19,7 @@ const Posts = (props: ProfileType) => {
     return (
         <div className={style.posts}>
             <div className={style.wrapper}>
-            <InputPost addPost={props.addPost} updateNewPostText={props.updateNewPostText} newPostText={props.newPostText}/>
+            <InputPost dispatch={props.dispatch} newPostText={props.newPostText}/>
             {postElements}
             </div>
         </div>
