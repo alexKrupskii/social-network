@@ -6,9 +6,14 @@ import Music from './Music/Music';
 import Settings from './Settings/Settings';
 import Profile from "./Profile/Profile";
 import {Route} from 'react-router-dom';
-import {StateExportType} from './../../redux/state'
+import {DispatchType, RootStateType} from './../../redux/state';
 
-const Content = (props: StateExportType) => {
+type PropsType = {
+    state: RootStateType
+    dispatch: DispatchType
+}
+
+const Content = (props: PropsType) => {
     return (
         <div className='container'>
             <div className={style.content}>

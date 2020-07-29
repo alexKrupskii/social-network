@@ -16,8 +16,8 @@ const InputPost = (props:PropsType) => {
         props.dispatch(addPostAC(props.newPostText));
     };
 
-    let onPostChange = (event: ChangeEvent<HTMLInputElement>) => {
-        let newText = event.target.value;
+    let onPostChange = (e: ChangeEvent<HTMLInputElement>) => {
+        let newText = e.target.value;
         props.dispatch(updateNewPostTextAC(newText));
     };
 

@@ -1,4 +1,6 @@
 import { v1 } from "uuid";
+import {profileReducer} from "./profile-reducer";
+import {chatReducer} from "./chat-reducer";
 
 export type DispatchType = (action: ActionsTypes) => void
 
@@ -7,14 +9,18 @@ export type ActionsTypes = ReturnType<typeof addPostAC> |
                            ReturnType<typeof updateNewPostTextAC> |
                            ReturnType<typeof updateNewMessageTextAC>
 
-export type StateExportType = {
-    state: StateType
+export type StoreType = {
+    _state: RootStateType
+    _onChange: () => void
+    subscribe: (callback: () => void) => void
+    getState: () => RootStateType
     dispatch: DispatchType
 }
-export type StateType = {
+export type RootStateType = {
     chatPage: ChatPageType
     profilePage: ProfilePageType
 }
+
 export type ProfilePageType = {
     postData: Array<PostDataType>
     sideBarData: SideBarDataType
@@ -25,15 +31,16 @@ export type ChatPageType = {
     dialogsData: Array<DialogsDataType>
 
 }
+
 export type MessagesPageType = {
     userMessageTitleData: Array<UserMessageTitleDataType>
-    messageData: Array<MessageDataType>
     newMessageText: string
+    messageData: Array<MessageDataType>
 }
 export type SideBarDataType = {
     userInfoData: Array<UserInfoDataType>
-    friendsData: Array<FriendsDataType>
-}
+    friendsData: Array<FriendsDataType>}
+
 export type UserInfoDataType = {
     id: number
     avatar: string
@@ -59,7 +66,7 @@ export type PostDataType = {
     repostCount: number
 }
 export type UserMessageTitleDataType = {
-    id?: number
+    id: number
     avatar: string
     userName: string
 }
@@ -70,12 +77,12 @@ export type MessageDataType = {
     message: string
 }
 export type DialogsDataType = {
-    id?: number
+    id: number
     avatar: string
     userName: string
 }
 
-let store = {
+export const store: StoreType = {
     _state: {
         profilePage: {
             sideBarData: {
@@ -166,63 +173,19 @@ let store = {
             }
         },
     },
-    _callSubscriber(state: StateType) { },
-
+    _onChange() { },
     getState() {
         return this._state;
     },
-    subscribe(observer: (state: StateType) => void) {
-        this._callSubscriber = observer;
+    subscribe(callback) {
+        this._onChange = callback;
     },
-
     dispatch(action: ActionsTypes) {
-        if (action.type === "ADD-POST") {
-            if (this._state.profilePage.newPostText) {
-                let newPostElement = {
-                    id: 1,
-                    userName: 'Gwyneth Paltrow',
-                    avatar: require("./../assets/img/gwyneth_ava.jpg"),
-                    time: 10 + ':' + 22,
-                    likesCount: 0,
-                    commentCount: 0,
-                    repostCount: 0,
-                    text: action.newText,
-                    postImg: ""
-                };
-                this._state.profilePage.postData.unshift(newPostElement);
-                this._state.profilePage.newPostText = '';
-                this._callSubscriber(this._state);
-            }
-        }
-
-        else if (action.type === "UPDATE-NEW-POST-TEXT") {
-            this._state.profilePage.newPostText =  action.updateNewPostText;
-            this._callSubscriber(this._state);
-        }
-
-        else if (action.type === "ADD-MESSAGE") {
-            if (this._state.chatPage.messagesPage.newMessageText === '') {
-            return false
-        } else {
-            let newMessageElement = {
-                id: "10",
-                avatar: require("./../assets/img/robert_ava.jpg"),
-                time: 5 + ":" + 32,
-                message: action.newText
-            };
-            this._state.chatPage.messagesPage.messageData.push(newMessageElement);
-            this._state.chatPage.messagesPage.newMessageText = '';
-            this._callSubscriber(this._state);
-            }
-        }
-
-        else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
-            this._state.chatPage.messagesPage.newMessageText = action.updateNewMessageText;
-            this._callSubscriber(this._state);
-        }
-
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.chatPage.messagesPage = chatReducer(this._state.chatPage.messagesPage, action);
+        this._onChange();
     }
-}
+};
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
