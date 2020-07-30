@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Sidebar.module.scss'
 import UserInfo from './UserInfo/UserInfo';
 import Friends from './Friends/Friends';
-import {SideBarDataType} from "../../../../redux/state";
+import {SideBarDataType} from "../../../../redux/store";
 
 type ProfilePageType = {
     sideBarData: SideBarDataType

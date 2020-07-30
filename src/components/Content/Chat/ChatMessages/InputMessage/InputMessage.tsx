@@ -1,13 +1,12 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './InputMessage.module.scss';
-import {addMessageAC, DispatchType, updateNewMessageTextAC} from "../../../../../redux/state";
+import {DispatchType} from "../../../../../redux/store";
+import {addMessageAC, updateNewMessageTextAC} from "../../../../../redux/chat-reducer";
 
 type PropsType = {
     newMessageText: string
     dispatch: DispatchType
 }
-
-
 
 const InputMessage = (props: PropsType) => {
 

@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Profile.module.scss'
 import Sidebar from './Sidebar/Sidebar';
 import Posts from './Posts/Posts';
-import {ProfilePageType, DispatchType} from "../../../redux/state";
+import {ProfilePageType, DispatchType} from "../../../redux/store";
 
 type PropsType = {
     profilePage: ProfilePageType

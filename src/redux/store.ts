@@ -1,6 +1,6 @@
 import { v1 } from "uuid";
-import {profileReducer} from "./profile-reducer";
-import {chatReducer} from "./chat-reducer";
+import {addPostAC, profileReducer, updateNewPostTextAC} from "./profile-reducer";
+import {addMessageAC, chatReducer, updateNewMessageTextAC} from "./chat-reducer";
 
 export type DispatchType = (action: ActionsTypes) => void
 
@@ -27,8 +27,8 @@ export type ProfilePageType = {
     newPostText: string
 }
 export type ChatPageType = {
-    messagesPage: MessagesPageType
     dialogsData: Array<DialogsDataType>
+    messagesPage: MessagesPageType
 
 }
 
@@ -180,28 +180,11 @@ export const store: StoreType = {
     subscribe(callback) {
         this._onChange = callback;
     },
+
     dispatch(action: ActionsTypes) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
-        this._state.chatPage.messagesPage = chatReducer(this._state.chatPage.messagesPage, action);
+        this._state.chatPage = chatReducer(this._state.chatPage, action);
         this._onChange();
     }
 };
-
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_MESSAGE = "ADD-MESSAGE";
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
-
-export const addPostAC = (newText: string) => ({type: ADD_POST, newText} as const);
-export const updateNewPostTextAC = (updateNewPostText: string) => ({
-        type: UPDATE_NEW_POST_TEXT,
-        updateNewPostText
-    } as const);
-
-export const addMessageAC = (newText: string) => ({type: ADD_MESSAGE, newText} as const);
-export const updateNewMessageTextAC = (updateNewMessageText: string) => ({
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        updateNewMessageText
-    } as const);
-
-export default store;
+export default store

@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Chat.module.scss'
 import ChatMessages from './ChatMessages/ChatMessages';
 import ChatDialogs from "./ChatDialogs/ChatDialogs";
-import {ChatPageType, DispatchType} from "../../../redux/state";
+import {ChatPageType, DispatchType} from "../../../redux/store";
 
 type PropsType = {
     chatPage: ChatPageType

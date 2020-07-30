@@ -3,7 +3,7 @@ import style from './ChatMessages.module.scss'
 import UserMessage from './UserMessage/UserMessage';
 import InputMessage from './InputMessage/InputMessage';
 import UserMessageTitle from './UserMessageTitle/UserMessageTitle';
-import {DispatchType, MessagesPageType} from './../../../../redux/state';
+import {DispatchType, MessagesPageType} from '../../../../redux/store';
 
 
 type ChatPageType = {

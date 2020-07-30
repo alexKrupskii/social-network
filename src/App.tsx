@@ -5,13 +5,15 @@ import Content from './components/Content/Content';
 import Footer from './components/Footer/Footer';
 import Navigation from "./components/Navigation/Navigation";
 import {Route} from 'react-router-dom';
-import {DispatchType, StoreType} from './redux/state';
+import {DispatchType, StoreType, RootStateType} from './redux/store';
 
 type PropsType = {
     store: StoreType
+    state: RootStateType
     dispatch: DispatchType
 }
 const App: React.FC<PropsType> = (props) => {
+
     const state = props.store.getState();
     return (
         <div className="app">

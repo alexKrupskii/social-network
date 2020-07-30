@@ -21,6 +21,7 @@ const Post = (props: PostType) => {
         setLikesCount(likesCount + 1)
     };
 
+
     return (
         <div className={style.post}>
             <div className={style.postInfo}>

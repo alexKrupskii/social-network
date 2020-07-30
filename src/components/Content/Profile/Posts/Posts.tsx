@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Posts.module.scss'
 import InputPost from './InputPost/InputPost';
 import Post from './Post/Post';
-import {PostDataType, DispatchType} from './../../../../redux/state'
+import {PostDataType, DispatchType} from '../../../../redux/store'
 
 type PropsType = {
     postData: Array<PostDataType>
@@ -13,13 +13,20 @@ type PropsType = {
 const Posts = (props: PropsType) => {
 
     let postElements = props.postData
-        .map( p => <Post id={p.id} userName={p.userName} postImg={p.postImg} avatar={p.avatar} time={p.time} text={p.text} likesCount={p.likesCount} commentCount={p.commentCount} repostCount={p.repostCount}/>)
-        
-
+        .map( p => <Post id={p.id}
+                         userName={p.userName}
+                         postImg={p.postImg}
+                         avatar={p.avatar}
+                         time={p.time}
+                         text={p.text}
+                         likesCount={p.likesCount}
+                         commentCount={p.commentCount}
+                         repostCount={p.repostCount}/>)
     return (
         <div className={style.posts}>
             <div className={style.wrapper}>
-            <InputPost dispatch={props.dispatch} newPostText={props.newPostText}/>
+            <InputPost dispatch={props.dispatch}
+                       newPostText={props.newPostText}/>
             {postElements}
             </div>
         </div>

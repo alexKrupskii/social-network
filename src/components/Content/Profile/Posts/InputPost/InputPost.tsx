@@ -1,6 +1,7 @@
 import React, {KeyboardEvent, ChangeEvent} from 'react';
 import style from './InputPost.module.scss';
-import {addPostAC, DispatchType, updateNewPostTextAC} from '../../../../../redux/state';
+import {DispatchType} from '../../../../../redux/store';
+import {addPostAC, updateNewPostTextAC} from "../../../../../redux/profile-reducer";
 
 type PropsType = {
     newPostText: string
@@ -26,7 +27,6 @@ const InputPost = (props:PropsType) => {
             addPost()
         }
     }
-
 
     return (
         <div className={style.inputPost}>

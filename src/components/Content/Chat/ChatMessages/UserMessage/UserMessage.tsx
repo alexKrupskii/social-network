@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './UserMessage.module.scss'
 import removeMessage from "./../../../../../assets/img/ico/remove.svg";
-import {MessageDataType} from "./../../../../../redux/state"
+import {MessageDataType} from "../../../../../redux/store"
 
 const UserMessage = (props: MessageDataType) => {
 
