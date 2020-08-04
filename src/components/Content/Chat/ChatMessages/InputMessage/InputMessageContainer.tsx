@@ -1,24 +1,23 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
-import {DispatchType} from "../../../../../redux/store";
+import {DispatchType, StoreType} from "../../../../../redux/store";
 import {addMessageAC, updateNewMessageTextAC} from "../../../../../redux/chat-reducer";
 import InputMessage from "./InputMessage";
 
 type InputMessageContainerType = {
-    newMessageText: string
-    dispatch: DispatchType
+    store: StoreType
 }
 
 const InputMessageContainer: React.FC<InputMessageContainerType> = (props) => {
 
-    let newMessageElement = props.newMessageText;
+    let newMessageElement = props.store.getState().chatPage.messagesPage.newMessageText;
 
     let addMessage = () => {
-        props.dispatch(addMessageAC(props.newMessageText));
+        props.store.dispatch(addMessageAC(newMessageElement));
     };
 
     let onMessageChange = (event: ChangeEvent<HTMLInputElement>) => {
         let newText = event.target.value;
-        props.dispatch(updateNewMessageTextAC(newText));
+        props.store.dispatch(updateNewMessageTextAC(newText));
     };
 
     let onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -27,12 +26,11 @@ const InputMessageContainer: React.FC<InputMessageContainerType> = (props) => {
         }
     };
 
-    return (
-       <InputMessage newMessageText={newMessageElement}
-                     addMessage={addMessage}
-                     onMessageChange={onMessageChange}
-                     onKeyPressHandler={onKeyPressHandler}
+    return <InputMessage newMessageText={newMessageElement}
+                         addMessage={addMessage}
+                         onMessageChange={onMessageChange}
+                         onKeyPressHandler={onKeyPressHandler}
        />
-    )
+
 };
 export default InputMessageContainer;

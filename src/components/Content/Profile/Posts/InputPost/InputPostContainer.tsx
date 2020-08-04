@@ -1,25 +1,24 @@
 import React, {KeyboardEvent, ChangeEvent} from 'react';
-import {DispatchType} from '../../../../../redux/store';
+import {DispatchType, StoreType} from '../../../../../redux/store';
 import {addPostAC, updateNewPostTextAC} from "../../../../../redux/profile-reducer";
 import InputPost from "./InputPost";
 
 type InputPropsContainerType = {
-    newPostText: string
-    dispatch: DispatchType
+    store: StoreType
 }
 
 
 const InputPostContainer: React.FC<InputPropsContainerType> = (props) => {
-
-    let newPostElement = props.newPostText;
+    let state = props.store.getState().profilePage;
+    let newPostElement = props.store._state.profilePage.newPostText;
 
     let addPost = () => {
-        props.dispatch(addPostAC(props.newPostText));
+        props.store.dispatch(addPostAC(state.newPostText));
     };
 
     let onPostChange = (e: ChangeEvent<HTMLInputElement>) => {
         let newText = e.target.value;
-        props.dispatch(updateNewPostTextAC(newText));
+        props.store.dispatch(updateNewPostTextAC(newText));
     };
 
     let onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -28,13 +27,12 @@ const InputPostContainer: React.FC<InputPropsContainerType> = (props) => {
         }
     };
 
-    return (
-        <InputPost newPostText={newPostElement}
-                   addPost={addPost}
-                   onPostChange={onPostChange}
-                   onKeyPressHandler={onKeyPressHandler}
+    return <InputPost newPostText={newPostElement}
+                      addPost={addPost}
+                      onPostChange={onPostChange}
+                      onKeyPressHandler={onKeyPressHandler}
         />
-    )
+
 };
 
 export default InputPostContainer;

@@ -2,18 +2,18 @@ import React from 'react';
 import style from './Posts.module.scss'
 import InputPost from './InputPost/InputPost';
 import Post from './Post/Post';
-import {PostDataType, DispatchType} from '../../../../redux/store'
+import {PostDataType, DispatchType, StoreType} from '../../../../redux/store'
 import InputPostContainer from "./InputPost/InputPostContainer";
 
 type PropsType = {
-    postData: Array<PostDataType>
-    newPostText: string
-    dispatch: DispatchType
+    store: StoreType
 }
 
 const Posts = (props: PropsType) => {
 
-    let postElements = props.postData
+    let state = props.store.getState().profilePage;
+
+    let postElements = state.postData
         .map( p => <Post id={p.id}
                          userName={p.userName}
                          postImg={p.postImg}
@@ -26,8 +26,7 @@ const Posts = (props: PropsType) => {
     return (
         <div className={style.posts}>
             <div className={style.wrapper}>
-            <InputPostContainer dispatch={props.dispatch}
-                       newPostText={props.newPostText}/>
+            <InputPostContainer store={props.store}/>
             {postElements}
             </div>
         </div>

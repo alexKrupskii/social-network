@@ -8,7 +8,6 @@ type InputPropsType = {
     onKeyPressHandler: (event: KeyboardEvent<HTMLInputElement>) => void
 }
 
-
 const InputPost: React.FC<InputPropsType> = (props) => {
     return (
         <div className={style.inputPost}>

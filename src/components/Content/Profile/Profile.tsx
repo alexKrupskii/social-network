@@ -2,19 +2,18 @@ import React from 'react';
 import style from './Profile.module.scss'
 import Sidebar from './Sidebar/Sidebar';
 import Posts from './Posts/Posts';
-import {ProfilePageType, DispatchType} from "../../../redux/store";
+import { StoreType} from "../../../redux/store";
 
 type PropsType = {
-    profilePage: ProfilePageType
-    dispatch: DispatchType
+    store: StoreType
 }
 
 const Profile = (props: PropsType) => {
 
     return (
         <div className={style.profile}>
-            <Sidebar sideBarData={props.profilePage.sideBarData}/>
-            <Posts postData={props.profilePage.postData} dispatch={props.dispatch} newPostText={props.profilePage.newPostText}/>
+            <Sidebar store={props.store}/>
+            <Posts store={props.store}/>
         </div>           
     )
 };

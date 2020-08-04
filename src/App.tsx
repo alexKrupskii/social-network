@@ -5,22 +5,21 @@ import Content from './components/Content/Content';
 import Footer from './components/Footer/Footer';
 import Navigation from "./components/Navigation/Navigation";
 import {Route} from 'react-router-dom';
-import {DispatchType, StoreType, RootStateType} from './redux/store';
+import {DispatchType, RootStateType, StoreType} from './redux/store';
 
 type PropsType = {
     store: StoreType
-    state: RootStateType
     dispatch: DispatchType
+    state: RootStateType
 }
+
 const App: React.FC<PropsType> = (props) => {
 
-    const state = props.store.getState();
     return (
         <div className="app">
             <Header/>
             <Navigation/>
-            <Content state={state}
-                     dispatch={props.dispatch}/>
+            <Content store={props.store}/>
             <Route path='/(music|profile|news|settings)' render={() => <Footer/>}/>
         </div>
     );
