@@ -1,31 +1,14 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './InputMessage.module.scss';
-import {DispatchType} from "../../../../../redux/store";
-import {addMessageAC, updateNewMessageTextAC} from "../../../../../redux/chat-reducer";
 
-type PropsType = {
+type InputMessageType = {
     newMessageText: string
-    dispatch: DispatchType
+    onKeyPressHandler: (event: KeyboardEvent<HTMLInputElement>) => void
+    onMessageChange: (event: ChangeEvent<HTMLInputElement>) => void
+    addMessage: () => void
 }
 
-const InputMessage = (props: PropsType) => {
-
-    let newMessageElement = props.newMessageText;
-
-    let addMessage = () => {
-        props.dispatch(addMessageAC(props.newMessageText));
-    };
-
-    let onMessageChange = (event: ChangeEvent<HTMLInputElement>) => {
-        let newText = event.target.value;
-        props.dispatch(updateNewMessageTextAC(newText));
-    };
-
-    let onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (event.charCode === 13) {
-            addMessage()
-        }
-    };
+const InputMessage: React.FC<InputMessageType> = (props) => {
 
     return (
         <div className={style.inputMessage}>
@@ -33,12 +16,12 @@ const InputMessage = (props: PropsType) => {
                 <img src="./ico/files_post/emoji.svg" alt="" />
             </div>
             <input type="text"
-                   onKeyPress={onKeyPressHandler}
-                   onChange={onMessageChange}
-                   value={newMessageElement}
+                   onKeyPress={props.onKeyPressHandler}
+                   onChange={props.onMessageChange}
+                   value={props.newMessageText}
                    placeholder='Type your message...' />
             <div className={style.inputBtn}>
-                <button onClick={addMessage}>Send</button>
+                <button onClick={props.addMessage}>Send</button>
             </div>
         </div>
     )

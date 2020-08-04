@@ -3,6 +3,7 @@ import style from './Posts.module.scss'
 import InputPost from './InputPost/InputPost';
 import Post from './Post/Post';
 import {PostDataType, DispatchType} from '../../../../redux/store'
+import InputPostContainer from "./InputPost/InputPostContainer";
 
 type PropsType = {
     postData: Array<PostDataType>
@@ -25,7 +26,7 @@ const Posts = (props: PropsType) => {
     return (
         <div className={style.posts}>
             <div className={style.wrapper}>
-            <InputPost dispatch={props.dispatch}
+            <InputPostContainer dispatch={props.dispatch}
                        newPostText={props.newPostText}/>
             {postElements}
             </div>

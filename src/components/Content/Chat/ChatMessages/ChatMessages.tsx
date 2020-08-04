@@ -4,6 +4,7 @@ import UserMessage from './UserMessage/UserMessage';
 import InputMessage from './InputMessage/InputMessage';
 import UserMessageTitle from './UserMessageTitle/UserMessageTitle';
 import {DispatchType, MessagesPageType} from '../../../../redux/store';
+import InputMessageContainer from "./InputMessage/InputMessageContainer";
 
 
 type ChatPageType = {
@@ -31,7 +32,7 @@ const ChatMessages = (props: ChatPageType) => {
             <div className={style.chat}>
                 {messagesElements}  
             </div>
-            <InputMessage dispatch={props.dispatch}
+            <InputMessageContainer dispatch={props.dispatch}
                           newMessageText={props.newMessageText} />
         </div>
     )
