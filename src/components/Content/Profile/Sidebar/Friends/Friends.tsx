@@ -11,7 +11,7 @@ type FriendsItemType = {
 }
 const Friends = (props: SideBarType) => {
     let friendsElements = props.friendsData
-        .map( f => <FriendsItem id={f.id} avatar={f.avatar} userName={f.userName} />)
+        .map( f => <FriendsItem key={f.id} id={f.id} avatar={f.avatar} userName={f.userName} />);
     return (
         <div className={style.friendsWrapper}>
             <div className={style.title}>Friends</div>

@@ -1,5 +1,6 @@
-import {ActionsTypes, ChatPageType} from "./store";
+
 import {v1} from "uuid";
+import {ChatPageType, ActionsTypes} from "./redux-store";
 
 export const ADD_MESSAGE = "ADD-MESSAGE";
 export const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
@@ -38,28 +39,35 @@ let initialState = {
 };
 
 export const chatReducer = (state: ChatPageType = initialState, action: ActionsTypes): ChatPageType => {
+    let stateCopy = {
+        ...state,
+    messagesData: [...state.messagesPage.messageData]
+    };
     switch (action.type) {
         case ADD_MESSAGE:
-            if (state.messagesPage.newMessageText) {
+            if (stateCopy.messagesPage.newMessageText) {
                 let newMessageElement = {
                     id: "10",
                     avatar: require("./../assets/img/robert_ava.jpg"),
                     time: 5 + ":" + 32,
-                    message: action.newText
+                    message: state.messagesPage.newMessageText
                 };
-                state.messagesPage.messageData.push(newMessageElement);
-                state.messagesPage.newMessageText = '';
+
+                stateCopy.messagesPage.messageData = [...state.messagesPage.messageData]
+                stateCopy.messagesPage.messageData.push(newMessageElement);
+                stateCopy.messagesPage.newMessageText = '';
+                return stateCopy;
             }
             return state;
         case UPDATE_NEW_MESSAGE_TEXT:
-            state.messagesPage.newMessageText = action.updateNewMessageText;
-            return state;
+            stateCopy.messagesPage.newMessageText = action.updateNewMessageText;
+            return stateCopy;
         default:
             return state;
     }
 };
 
-export const addMessageAC = (newText: string) => ({type: ADD_MESSAGE, newText} as const);
+export const addMessageAC = () => ({type: ADD_MESSAGE} as const);
 export const updateNewMessageTextAC = (updateNewMessageText: string) => ({
     type: UPDATE_NEW_MESSAGE_TEXT,
     updateNewMessageText

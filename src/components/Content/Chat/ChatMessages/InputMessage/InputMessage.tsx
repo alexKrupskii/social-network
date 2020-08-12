@@ -1,7 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './InputMessage.module.scss';
 
-type InputMessageType = {
+export type InputMessageType = {
     newMessageText: string
     onKeyPressHandler: (event: KeyboardEvent<HTMLInputElement>) => void
     onMessageChange: (event: ChangeEvent<HTMLInputElement>) => void

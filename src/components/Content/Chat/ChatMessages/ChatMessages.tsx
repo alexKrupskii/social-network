@@ -1,21 +1,21 @@
 import React from 'react';
 import style from './ChatMessages.module.scss'
 import UserMessage from './UserMessage/UserMessage';
-import InputMessage from './InputMessage/InputMessage';
 import UserMessageTitle from './UserMessageTitle/UserMessageTitle';
-import {DispatchType, MessagesPageType, StoreType} from '../../../../redux/store';
+import storeRedux from '../../../../redux/redux-store';
 import InputMessageContainer from "./InputMessage/InputMessageContainer";
 
 
+
 type ChatPageType = {
-    store: StoreType
+
 }
 
 const ChatMessages = (props: ChatPageType) => {
-    let state = props.store.getState().chatPage.messagesPage;
+    let state = storeRedux.getState().chatPage.messagesPage;
 
     let messagesElements = state.messageData
-        .map(m => <UserMessage id={m.id} avatar={m.avatar} time={m.time} message={m.message} />)
+        .map(m => <UserMessage id={m.id} avatar={m.avatar} time={m.time} message={m.message} />);
 
     let userMessageTitleElement = state.userMessageTitleData
         .map(t => <UserMessageTitle avatar={t.avatar} userName={t.userName} />);
@@ -31,7 +31,7 @@ const ChatMessages = (props: ChatPageType) => {
             <div className={style.chat}>
                 {messagesElements}  
             </div>
-            <InputMessageContainer store={props.store} />
+            <InputMessageContainer/>
         </div>
     )
 };

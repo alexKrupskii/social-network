@@ -6,10 +6,10 @@ import Music from './Music/Music';
 import Settings from './Settings/Settings';
 import Profile from "./Profile/Profile";
 import {Route} from 'react-router-dom';
-import {StoreType} from '../../redux/store';
+
 
 type PropsType = {
-    store: StoreType
+
 }
 
 const Content = (props: PropsType) => {
@@ -18,9 +18,9 @@ const Content = (props: PropsType) => {
             <div className={style.content}>
                 <div className={style.content__page}>
                     <Route path='/profile' render = {()=> <Profile
-                        store={props.store}/>} />
+                        />} />
                     <Route path='/chat' render = {()=> <Chat
-                        store={props.store}
+
                         />} />
                     <Route path='/news' render = {()=> <News />} />
                     <Route path='/music' render = {()=> <Music />} />

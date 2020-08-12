@@ -1,14 +1,19 @@
-import React, {KeyboardEvent, ChangeEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './InputPost.module.scss';
+import {addPostAC} from "../../../../../redux/profile-reducer";
 
-type InputPropsType = {
+export type InputPropsType = {
     newPostText: string
     addPost: () => void
     onPostChange: (e: ChangeEvent<HTMLInputElement>) => void
     onKeyPressHandler: (event: KeyboardEvent<HTMLInputElement>) => void
 }
 
+
+
+
 const InputPost: React.FC<InputPropsType> = (props) => {
+
     return (
         <div className={style.inputPost}>
             <div className={style.title}>New post</div>

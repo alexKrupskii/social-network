@@ -1,4 +1,4 @@
-import {ActionsTypes, ProfilePageType} from "./store";
+import storeRedux, {ActionsTypes, ProfilePageType} from "./redux-store";
 
 export const ADD_POST = "ADD-POST";
 export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
@@ -56,9 +56,14 @@ let initialState = {
     newPostText: ''
 };
 
+
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes) => {
+    let stateCopy = {
+        ...state,
+        postData: [...state.postData]
+    };
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             if (state.newPostText) {
                 let newPostElement = {
                     id: 1,
@@ -68,23 +73,32 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
                     likesCount: 0,
                     commentCount: 0,
                     repostCount: 0,
-                    text: action.newText,
+                    text: state.newPostText,
                     postImg: ""
                 };
-                state.postData.unshift(newPostElement);
-                state.newPostText = '';
+                stateCopy.postData.push(newPostElement);
+                stateCopy.newPostText = '';
+                console.log(stateCopy.postData);
             }
-            return state;
-        case UPDATE_NEW_POST_TEXT:
-                state.newPostText = action.updateNewPostText;
-            return state;
+            return stateCopy;
+        }
+
+        case UPDATE_NEW_POST_TEXT: {
+            stateCopy.newPostText = action.updateNewPostText;
+            return stateCopy;
+        }
         default:
             return state;
     }
 };
 
-export const addPostAC = (newText: string) => ({type: ADD_POST, newText} as const);
+export const addPostAC = () => ({
+    type: ADD_POST,
+}  as const);
+
 export const updateNewPostTextAC = (updateNewPostText: string) => ({
     type: UPDATE_NEW_POST_TEXT,
     updateNewPostText
 } as const);
+// @ts-ignore
+window.store = storeRedux;

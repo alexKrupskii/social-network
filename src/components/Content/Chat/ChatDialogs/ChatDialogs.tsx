@@ -2,14 +2,14 @@ import React from 'react';
 import style from './ChatDialogs.module.scss'
 import UserDialog from './UserDialog/UserDialog';
 import robert from './../../../../assets/img/robert_ava.jpg'
-import {StoreType} from "../../../../redux/store";
+import storeRedux from "../../../../redux/redux-store";
 
 type ChatType = {
-    store: StoreType
+
 }
 
 const ChatDialogs = (props:ChatType) => {
-    let state = props.store.getState().chatPage;
+    let state = storeRedux.getState().chatPage;
 
     let UserDialogsElement = state.dialogsData
         .map(d => <UserDialog avatar={d.avatar} userName={d.userName}/>);
